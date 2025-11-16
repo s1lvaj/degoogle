@@ -95,7 +95,15 @@ if __name__ == '__main__':
     RECEIVER_EMAIL = ""
 
     body = ""
+
+    # SOME GENERAL NEWS
     body = get_news('https://www.rtp.pt/noticias/rss/pais', 'RTP Noticias Portugal', body)  # example of the rss of rtp, a portuguese news source
     body = get_news('https://www.rtp.pt/noticias/rss/mundo', 'RTP Noticias Mundo', body)
     body = get_news('https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml', 'RTP Noticias Portugal', body)  # example of the rss of another news source
     body = get_news('https://rss.nytimes.com/services/xml/rss/nyt/World.xml', 'RTP Noticias Mundo', body)
+
+    # SOME PURELY POSITIVE NEWS
+    body = get_news('https://www.goodnewsnetwork.org/category/news/world/feed/', 'Good News World', body)
+    body = get_news('https://www.goodnewsnetwork.org/category/news/science/feed/', 'Good News Science', body)
+    body = get_news('https://www.goodnewsnetwork.org/category/news/health/feed/', 'Good News Health', body)
+    body = get_news('https://www.goodnewsnetwork.org/category/news/inspiring/feed/', 'Good News Inspiring', body)
