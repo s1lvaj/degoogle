@@ -39,10 +39,9 @@ def get_channel_info(
     new_body = ""
     for name in channels.keys():
         try:
-            # We need first to activate 'youtube data api v3'. If we try to open the url below, it will give an error and show a page saying how to do it...
-            url = f"https://www.googleapis.com/youtube/v3/search?key={api_key}&channelId={channels[name]}&part=snippet,id&type=video&order=date&publishedAfter={published_after}&maxResults=1"
-            response = json.load(urllib.request.urlopen(url))
-            video_title = response['items'][0]['snippet']['title']
+            url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channels[name]}"
+            response = ...
+            video_title = ...
             new_body += f"{name}: {video_title}\n"
         except:
             pass
@@ -95,7 +94,6 @@ def send_email(
 
 if __name__ == '__main__':
 
-    API_KEY = ""
     SENDER_EMAIL = ""
     SENDER_PASSWORD = ""
     RECEIVER_EMAIL = ""
@@ -118,7 +116,11 @@ if __name__ == '__main__':
         "": "",
     }
 
-    body = ""
+    body = "\
+        *---------------------*\n\
+        *YOUTUBE SUBSCRIPTIONS*\n\
+        *---------------------*"
+    
     body = get_channel_info(API_KEY, stem, 'STEM', body)
     # body = get_channel_info(API_KEY, other, 'Other Stuff', body)
     send_email(body, SENDER_EMAIL, SENDER_PASSWORD, RECEIVER_EMAIL)
