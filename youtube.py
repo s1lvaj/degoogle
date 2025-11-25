@@ -10,7 +10,6 @@ from email.mime.text import MIMEText
 """
 
 def get_channel_info(
-        api_key: str,
         channels: dict,
         title: str,
         body: str,
@@ -19,7 +18,6 @@ def get_channel_info(
     Get information from the channels, and form a message to be sent.
 
     Args:
-        api_key: String with the API key of the account which will access youtube's information.
         channels: Dictionary with the channel's name and their channel id.
         title: String of this section for the email.
         body: String with the current body of the email, to which the new information will be appended.
@@ -121,6 +119,6 @@ if __name__ == '__main__':
         *YOUTUBE SUBSCRIPTIONS*\n\
         *---------------------*"
     
-    body = get_channel_info(API_KEY, stem, 'STEM', body)
-    # body = get_channel_info(API_KEY, other, 'Other Stuff', body)
-    send_email(body, SENDER_EMAIL, SENDER_PASSWORD, RECEIVER_EMAIL)
+    body = get_channel_info(stem, 'STEM', body)
+    # body = get_channel_info(other, 'Other Stuff', body)
+    # send_email(body, SENDER_EMAIL, SENDER_PASSWORD, RECEIVER_EMAIL)
