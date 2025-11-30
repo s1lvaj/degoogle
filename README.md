@@ -1,18 +1,12 @@
 # Why degoogle your life?
 
-Take control of your software. There are opensource alternatives.
-
-Tech is supposed to be a helpful tool, also allowing us to consume content, but always as a means to
-
-Information to degoogle and have more control over your tech.
-
-This is not about "having something to hide", it's about the right to privacy.
+This repository serves as a guide to degoogle your life. This act serves to take control of your software, choosing better (and sometime opensource) alternatives. Technology is supposed to be a helpful tool, also allowing us to consume content, but always as a means to serve and enrich our lives, NEVER in order overwhelm us and consider our life and attention as a market niche to be explored.
 
 ## 1. Browser and Search Engine
 
 Don't use Google Chrome or Edge. Firefox is a great alternative, as well as Brave. An adblocker is also crucial. Navigating the internet without an adblocker is like crossing the street without looking to both sides. Ads are mostly malware, so you need to be safe.
 
-Then go to your browser settings and change the default search engine to something like duckduckgo, instead of google.
+Then go to your browser settings and change the default search engine to something like duckduckgo, instead of google. It can also help to tell your browser to delete all your cookies, history and data every time you close it.
 
 Some 5 minutes are enough to do this.
 
@@ -28,19 +22,13 @@ Protonmail is a good alternative to google when it comes to email.
 
 ## 4. Calendar and Cloud Storage
 
-Protonmail can also be a solution when it comes to calendar and cloud storage (however, for projects, creating an opensource github repository can be better to save storage).
+Protonmail can also be a solution when it comes to calendar and cloud storage (however, for projects, creating an opensource github repository can be better, as long as you don't share anything too personal).
 
 ## 5. Maps
 
 Very hard to replace. Apple Maps is safer than Google Maps. But opensource alternatives can also be good to look at.
 
-## 6. Phone
-
-Your phone's operating system is design to distract you, to notify you of things that don't matter, and to make you the product. Changing your operating system to something like GrapheneOS can make you take control of it once again.
-
-Apps don't run and see what you do on the background, you can choose what they have access to (even if they have access to the internet or not), you can create different profiles with different apps, etc. Using apps now feels intentional.
-
-## 7. Content
+## 6. Content
 
 You can get content from youtube channels, and even news articles, by using their RSS feeds.
 
@@ -48,7 +36,7 @@ For instance, on youtube, have account turned off. The script in this repository
 
 For other news/content, the same can be made.
 
-With time, you'll see u dont care about some of the channels. This is not to pass the idea of "phone bad", but "being overwhelmed and with no autonomy is bad". Content is great, but you need to be able to clearly choose what you want to see. And after a quarter of a life consuming a lot of content, maybe clearly controling it is the best. Again, technology is supposed to help you out, not consider your life and attention as a market niche to be explored.
+With time, you'll see u dont care about some of the channels.
 
 ```javascript Sending Email
 def send_email(
@@ -89,7 +77,7 @@ def send_email(
     return
 ```
 
-## 8. MPV on Windows
+## 7. MPV on Windows
 
 If you don't wanna open youtube directly to watch the videos, mpv is a great alternative: https://mpv.io/installation/
 
@@ -104,6 +92,16 @@ The next step is to extract the files to `C:\Program Files\mpv` and add this to 
 
 The only remaining step is to install yt-dlp (mpv uses it to play youtube urls) by typing `pip install yt-dlp` (it should work by default if you already have python in path). Then, the command `mpv <youtube-link>` should work as intended.
 
-## 9. Switch to Linux
+## 8. Operating Systems
 
-A final step would be to even ditch windows for linux. This isn't really related to google, but to privacy more in general.
+A final step would be to even ditch windows for linux. This isn't really related to google, but to privacy more in general. Linux ricing and choosing a distribution can also be quite fun, but it requires a lot of work and willingness to learn. However, it will give you much more control over your technology.
+
+Regarding your phone, its operating system is design to distract you, to notify you of things that don't matter, and to make you the product. Changing your operating system to something like GrapheneOS can make you take control of it once again. Apps don't run and see what you do on the background, you can choose what they have access to (even if they have access to the internet or not), you can create different profiles with different apps, etc. Using apps now feels intentional.
+
+## 9. Next Steps
+
+If all of these steps have been completed, you are already way better when it comes to online privacy. Some next steps would be to limit social media usage. While ditching it is not needed, for it can be quite fun to share advetures with friends, it shouldn't define your life, and you should also pay attention to what you post. Do NOT share your entire life, specially with people you do not know. Use different names or personas when possible. Know how to identify scams.
+
+Using apps like signal to commnicate, instead of whatsapp, could also be good, but it isn't critical, like using Tor as your default browser, encrypting all your email and information, only using cash to pay for things, etc. It can be overkill unless you are an activist.
+
+And not really regarding pc/phone stuff, it is crucial that you buy products that you can own. Buying a futuristic car can be fun, but if it can be hacked, locks you in for software updates, or locks functions behind a subscription, is it really worth it? You deserve to not watch an ad every time you reach a red light. Research before investing into it.
