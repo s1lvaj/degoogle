@@ -1,8 +1,7 @@
 import urllib.request
 import json
 import time
-import smtplib
-from email.mime.text import MIMEText
+import xmltodict
 
 """
 1. You only get news from your subscriptions, not youtube trying to recommend you stuff, and organized in sections that YOU create.
@@ -38,8 +37,10 @@ def get_channel_info(
     for name in channels.keys():
         try:
             url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channels[name]}"
-            response = ...
-            video_title = ...
+            data = urllib.request.urlopen(url)
+            data_read = data.read().decode('utf-8')
+            data_parsed = xmltodict.parse(data_read)
+            video_title = data_parsed['feed']['entry'][0]
             new_body += f"{name}: {video_title}\n"
         except:
             pass
@@ -79,8 +80,9 @@ if __name__ == '__main__':
     body = "\
         *---------------------*\n\
         *YOUTUBE SUBSCRIPTIONS*\n\
-        *---------------------*"
+        *---------------------*\n"
     
     body = get_channel_info(stem, 'STEM', body)
     # body = get_channel_info(other, 'Other Stuff', body)
     # send_email(body, SENDER_EMAIL, SENDER_PASSWORD, RECEIVER_EMAIL)
+    print(body)
