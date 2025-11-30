@@ -50,8 +50,6 @@ For other news/content, the same can be made.
 
 With time, you'll see u dont care about some of the channels. This is not to pass the idea of "phone bad", but "being overwhelmed and with no autonomy is bad". Content is great, but you need to be able to clearly choose what you want to see. And after a quarter of a life consuming a lot of content, maybe clearly controling it is the best. Again, technology is supposed to help you out, not consider your life and attention as a market niche to be explored.
 
-If you don't wanna open youtube directly to watch the videos, mpv is a great alternative: https://mpv.io/installation/
-
 ```javascript Sending Email
 def send_email(
         body: str,
@@ -90,3 +88,22 @@ def send_email(
     
     return
 ```
+
+## 8. MPV on Windows
+
+If you don't wanna open youtube directly to watch the videos, mpv is a great alternative: https://mpv.io/installation/
+
+This is an opensource multimedia player, working for every type of file, and even youtube links. If you use windows, you can use the link above, or install the `7z` file directly from here: https://github.com/zhongfly/mpv-winbuild/releases
+
+The next step is to extract the files to `C:\Program Files\mpv` and add this to path. To do that:
+1. Search for `Edit the system environment variables`.
+2. Click `Environment Variables`.
+3. Under `System variables`, select `Path` and `Edit`.
+4. Add `C:\Program Files\mpv`.
+5. Test it by opening the terminal and typing `mpv --version`. If it prints the version, it works.
+
+The only remaining step is to install yt-dlp (mpv uses it to play youtube urls) by typing `pip install yt-dlp` (it should work by default if you already have python in path). Then, the command `mpv <youtube-link>` should work as intended.
+
+## 9. Switch to Linux
+
+A final step would be to even ditch windows for linux. This isn't really related to google, but to privacy more in general.
