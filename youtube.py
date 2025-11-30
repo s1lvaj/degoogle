@@ -40,8 +40,9 @@ def get_channel_info(
             data = urllib.request.urlopen(url)
             data_read = data.read().decode('utf-8')
             data_parsed = xmltodict.parse(data_read)
-            video_title = data_parsed['feed']['entry'][0]
-            new_body += f"{name}: {video_title}\n"
+            video_title = data_parsed['feed']['entry'][0]['title']
+            video_id = data_parsed['feed']['entry'][0]['yt:videoId']
+            new_body += f"{name}: {video_title}, {video_id}\n"
         except:
             pass
     
