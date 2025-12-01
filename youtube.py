@@ -1,12 +1,7 @@
 import urllib.request
-import json
 import time
 import xmltodict
 
-"""
-1. You only get news from your subscriptions, not youtube trying to recommend you stuff, and organized in sections that YOU create.
-2. Having no youtube account and no cookies on the website makes the search function more useful and you get more variety of recommendations.
-"""
 
 def get_channel_info(
         channels: dict,
@@ -14,7 +9,7 @@ def get_channel_info(
         body: str,
 ):
     """
-    Get information from the channels, and form a message to be sent.
+    Get information from the channels, and form a message with the information.
 
     Args:
         channels: Dictionary with the channel's name and their channel id.
@@ -35,30 +30,54 @@ def get_channel_info(
 
     new_body = ""
     for name in channels.keys():
-        try:
-            url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channels[name]}"
-            data = urllib.request.urlopen(url)
-            data_read = data.read().decode('utf-8')
-            data_parsed = xmltodict.parse(data_read)
-            video_title = data_parsed['feed']['entry'][0]['title']
-            video_id = data_parsed['feed']['entry'][0]['yt:videoId']
-            new_body += f"{name}: {video_title}, {video_id}\n"
-        except:
-            pass
+        i = 0
+        while True:
+            try:
+                url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channels[name]}"
+                data = urllib.request.urlopen(url)
+                data_read = data.read().decode('utf-8')
+                data_parsed = xmltodict.parse(data_read)
+                video_title = data_parsed['feed']['entry'][i]['title']
+                video_id = data_parsed['feed']['entry'][i]['yt:videoId']
+                video_published = data_parsed['feed']['entry'][i]['published']
+
+                if video_published < published_after:  # if the video is older than 1 day, we don't want it
+                    break
+
+                new_body += f"{name}: {video_title}, https://www.youtube.com/watch?v={video_id}\n"
+                i += 1
+            except:
+                break
     
     if new_body != "":  # there's information to be added
         body += f"{title}:\n{new_body}\n"  # extra blank line at the end
 
-    print("Done " + title)
+    return body
+
+
+def get_channel_groups_info(channel_groups: dict):
+    """
+    Get information from the channels, and form a message with the information.
+
+    Args:
+        channel_groups: Dictionary linking the group's title to the group's dictionary.
+    
+    Returns:
+        body: String with the updated body of the email.
+    """
+
+    body = ""
+
+    for group in channel_groups.keys():
+        body = get_channel_info(channel_groups[group], group, body)
 
     return body
 
 
 if __name__ == '__main__':
 
-    SENDER_EMAIL = ""
-    SENDER_PASSWORD = ""
-    RECEIVER_EMAIL = ""
+    """
+    EXAMPLE:
 
     stem = {
         "3Blue1Brown": "UCYO_jab_esuFRV4b17AJtAw",
@@ -78,12 +97,8 @@ if __name__ == '__main__':
         "": "",
     }
 
-    body = "\
-        *---------------------*\n\
-        *YOUTUBE SUBSCRIPTIONS*\n\
-        *---------------------*\n"
-    
-    body = get_channel_info(stem, 'STEM', body)
-    # body = get_channel_info(other, 'Other Stuff', body)
-    # send_email(body, SENDER_EMAIL, SENDER_PASSWORD, RECEIVER_EMAIL)
+    groups = {'STEM': stem, 'Other Channels': other}
+    """
+
+    body = get_channel_groups_info(groups)
     print(body)

@@ -1,12 +1,7 @@
 import urllib.request
 import json
 import time
-import smtplib
-from email.mime.text import MIMEText
 
-"""
-...
-"""
 
 def get_news(
         rss_url: str,
