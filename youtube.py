@@ -1,6 +1,7 @@
 import urllib.request
 import time
 import xmltodict
+import json
 import os
 
 
@@ -101,7 +102,7 @@ if __name__ == '__main__':
     groups = {'STEM': stem, 'Other Channels': other}
     """
 
-    groups = os.getenv("groups")  # I'll fetch it directly from my environmental variables
+    groups = json.loads(os.getenv("CHANNEL_GROUPS"))  # I'll fetch it directly from my environmental variables, as a json
 
     body = get_channel_groups_info(groups)
     print(body)
