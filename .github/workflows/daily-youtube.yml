@@ -2,11 +2,15 @@ name: Run Python Script Daily
 
 on:
   schedule:
-    - cron: "0 18 * * *"   # runs every day at 18:00 UTC
+    - cron: "10 18 * * *"   # runs every day at 18:10 UTC
 
 jobs:
   run-script:
     runs-on: ubuntu-latest
+
+    env:
+      CHANNEL_GROUPS: ${{ secrets.CHANNEL_GROUPS }}   # JSON secret
+    
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -15,6 +19,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
 
       - name: Run script
         run: |
