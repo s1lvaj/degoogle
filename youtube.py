@@ -1,6 +1,7 @@
 import urllib.request
 import time
 import xmltodict
+import os
 
 
 def get_channel_info(
@@ -99,6 +100,8 @@ if __name__ == '__main__':
 
     groups = {'STEM': stem, 'Other Channels': other}
     """
+
+    groups = os.getenv("groups")  # I'll fetch it directly from my environmental variables
 
     body = get_channel_groups_info(groups)
     print(body)
