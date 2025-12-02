@@ -10,6 +10,9 @@ jobs:
 
     env:
       CHANNEL_GROUPS: ${{ secrets.CHANNEL_GROUPS }}   # JSON secret
+      SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+      SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+      RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
     
     steps:
       - name: Checkout repo
@@ -27,4 +30,4 @@ jobs:
       - name: Run script
         run: |
           python youtube.py
-          exit 1
+          exit 0
