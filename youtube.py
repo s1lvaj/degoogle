@@ -107,3 +107,4 @@ if __name__ == '__main__':
     GROUPS = json.loads(os.getenv("CHANNEL_GROUPS"))  # I'll fetch it directly from my environmental variables, as a json
 
     body = get_channel_groups_info(GROUPS)
+    print(body)
