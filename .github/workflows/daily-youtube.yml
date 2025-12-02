@@ -34,7 +34,6 @@ jobs:
 
       - name: Run script
         run: |
-          #set +x  # Disable command echoing (don't show in logs)
           
           # Step 1: Create DM Channel
           DM_CHANNEL=$(curl -s -X POST "https://discord.com/api/v10/users/@me/channels" \
@@ -42,10 +41,26 @@ jobs:
           -H "Content-Type: application/json" \
           -d "{\"recipient_id\": \"$DISCORD_USER_ID\"}")
 
+          if [[ $? -ne 0 ]]; then
+            echo "Error creating DM channel"
+            exit 1
+          fi
+
+          echo "DM_CHANNEL: $DM_CHANNEL"
           CHANNEL_ID=$(echo "$DM_CHANNEL" | jq -r '.id')
+
+          if [[ -z "$CHANNEL_ID" ]]; then
+            echo "Failed to retrieve channel ID"
+            exit 1
+          fi
 
           # Step 2: Run the script
           OUTPUT=$(python youtube.py)
+
+          if [[ $? -ne 0 ]]; then
+            echo "Error running python script"
+            exit 1
+          fi
 
           # Step 3: Send DM
           curl -H "Content-Type: application/json" \
@@ -54,5 +69,10 @@ jobs:
           -d "{\"content\": \"Your Daily Subscription Activity:\n$OUTPUT\"}" \
           https://discord.com/api/v10/channels/$CHANNEL_ID/messages
 
-          #set -x
+          if [[ $? -ne 0 ]]; then
+            echo "Error sending DM message"
+            exit 1
+          fi
+
+          echo "Script executed successfully"
           exit 0
