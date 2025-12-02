@@ -30,13 +30,11 @@ Very hard to replace. Apple Maps is safer than Google Maps. But opensource alter
 
 ## 6. Content
 
-You can get content from youtube channels, and even news articles, by using their RSS feeds.
+You can get content from youtube channels, and even news articles, by using their RSS feeds. The script in this repository can be used for this. This way, you can even navigate youtube with your account turned off. For other news and content, the same can be made.
 
-For instance, on youtube, have account turned off. The script in this repository can be used for this.
+This repository has github actions running daily scripts to gather the recent news and publications from some online content, and sending them using a personalized telegram/slack/discord bot. With time, you'll see u dont care about some of the channels, and will start removing them from your list.
 
-For other news/content, the same can be made.
-
-With time, you'll see u dont care about some of the channels.
+If you wanted to include in your script the function to directly send you an email using a gmail account, that would also be possible with the script below. But since this is a degoogle repository, that option will not be used.
 
 ```javascript Sending Email
 def send_email(

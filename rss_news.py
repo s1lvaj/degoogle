@@ -1,6 +1,10 @@
 import urllib.request
-import json
 import time
+import json
+import os
+import smtplib
+from email.mime.text import MIMEText
+import xmltodict
 
 
 def get_news(
@@ -46,7 +50,7 @@ def get_news(
 
 
 if __name__ == '__main__':
-
+    
     body = ""
 
     # SOME GENERAL NEWS

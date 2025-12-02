@@ -78,44 +78,6 @@ def get_channel_groups_info(channel_groups: dict):
     return body
 
 
-def send_email(
-        body: str,
-        sender_email: str,
-        sender_password: str,
-        receiver_email: str,
-        ):
-    
-    """
-    Sends an email with the subscription's activity.
-
-    Args:
-        body: Body of the email to be sent, with the subscription's name and latest activity.
-        sender_email: String with the email of the sender.
-        sender_password: String with the password of the sender.
-        receiver_email: String with the email of the receiver.
-    
-    Returns:
-        None.
-    """
-    
-    msg = MIMEText(body)
-    msg['From'] = sender_email
-    msg['To'] = receiver_email
-    msg['Subject'] = 'Your YouTube Subscriprion Activity'
-
-    try:
-        with smtplib.SMTP_SSL('smtp.gmail.com', 587) as server:
-            server.ehlo()
-            server.starttls()
-            server.ehlo()
-            server.login(sender_email, sender_password)
-            server.sendmail(sender_email, receiver_email, msg.as_string())
-    except Exception as e:
-        print(f"Failed to send email: {e}")
-    
-    return
-
-
 if __name__ == '__main__':
 
     """
@@ -143,9 +105,5 @@ if __name__ == '__main__':
     """
 
     GROUPS = json.loads(os.getenv("CHANNEL_GROUPS"))  # I'll fetch it directly from my environmental variables, as a json
-    SENDER_EMAIL = os.getenv("SENDER_EMAIL")
-    SENDER_PASSWORD = os.getenv("SENDER_PASSWORD")
-    RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL")
 
     body = get_channel_groups_info(GROUPS)
-    send_email(body, SENDER_EMAIL, SENDER_PASSWORD, RECEIVER_EMAIL)
