@@ -2,7 +2,13 @@ name: Run Python Script Daily
 
 on:
   schedule:
-    - cron: "0 20 * * *"   # Runs every day at 16:00 UTC
+    - cron: "0 16 * * *"   # Runs every day at 16:00 UTC
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy'
+        required: true
+        default: 'development'
 
 jobs:
   run-script:
@@ -28,7 +34,7 @@ jobs:
 
       - name: Run script
         run: |
-          set +x  # Disable command echoing (don't show in logs)
+          #set +x  # Disable command echoing (don't show in logs)
           
           # Step 1: Create DM Channel
           DM_CHANNEL=$(curl -s -X POST "https://discord.com/api/v10/users/@me/channels" \
@@ -48,5 +54,5 @@ jobs:
           -d "{\"content\": \"Your Daily Subscription Activity:\n$OUTPUT\"}" \
           https://discord.com/api/v10/channels/$CHANNEL_ID/messages
 
-          set -x
+          #set -x
           exit 0
