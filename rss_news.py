@@ -25,9 +25,9 @@ def get_news(
     """
 
     try:
-        # Compute 24h10min ago in RFC3339 format
+        # Compute 25h30min ago in RFC3339 format (github actions can take quite a long time to run)
         published_after = time.strftime(
-            "%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - (24 * 60 * 60) - (10 * 60))
+            "%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - (25 * 60 * 60) - (30 * 60))
         )
     except Exception as e:
         body += f"{e}"
