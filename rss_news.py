@@ -47,10 +47,6 @@ def get_news(
 
 if __name__ == '__main__':
 
-    SENDER_EMAIL = ""
-    SENDER_PASSWORD = ""
-    RECEIVER_EMAIL = ""
-
     body = ""
 
     # SOME GENERAL NEWS
