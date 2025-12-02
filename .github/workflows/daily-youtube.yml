@@ -62,11 +62,13 @@ jobs:
             exit 1
           fi
 
-          # Step 3: Send DM
+          # Step 3: Send DM safely using jq to escape the content
+          CONTENT=$(printf "Your Daily Subscription Activity:\n\n$OUTPUT" | jq -Rs .)
+          
           curl -H "Content-Type: application/json" \
           -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
           -X POST \
-          -d "{\"content\": \"Your Daily Subscription Activity:\n$OUTPUT\"}" \
+          -d "{\"content\": $CONTENT}" \
           https://discord.com/api/v10/channels/$CHANNEL_ID/messages
 
           if [[ $? -ne 0 ]]; then
