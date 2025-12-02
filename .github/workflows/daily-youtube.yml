@@ -2,7 +2,7 @@ name: Run Python Script Daily
 
 on:
   schedule:
-    - cron: "0 16 * * *"   # runs every day at 16:00 UTC
+    - cron: "0 20 * * *"   # Runs every day at 16:00 UTC
 
 jobs:
   run-script:
@@ -10,9 +10,8 @@ jobs:
 
     env:
       CHANNEL_GROUPS: ${{ secrets.CHANNEL_GROUPS }}   # JSON secret
-      SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
-      SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
-      RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
+      DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}  # Bot I created by using discord for developers
+      DISCORD_USER_ID: ${{ secrets.DISCORD_USER_ID }}  # My discord user ID (you can get it by going to settings > advanced > enable developer mode > right click a user)
     
     steps:
       - name: Checkout repo
@@ -29,5 +28,25 @@ jobs:
 
       - name: Run script
         run: |
-          python youtube.py
+          set +x  # Disable command echoing (don't show in logs)
+          
+          # Step 1: Create DM Channel
+          DM_CHANNEL=$(curl -s -X POST "https://discord.com/api/v10/users/@me/channels" \
+          -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
+          -H "Content-Type: application/json" \
+          -d "{\"recipient_id\": \"$DISCORD_USER_ID\"}")
+
+          CHANNEL_ID=$(echo "$DM_CHANNEL" | jq -r '.id')
+
+          # Step 2: Run the script
+          OUTPUT=$(python youtube.py)
+
+          # Step 3: Send DM
+          curl -H "Content-Type: application/json" \
+          -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
+          -X POST \
+          -d "{\"content\": \"Your Daily Subscription Activity:\n$OUTPUT\"}" \
+          https://discord.com/api/v10/channels/$CHANNEL_ID/messages
+
+          set -x
           exit 0
