@@ -46,7 +46,6 @@ jobs:
             exit 1
           fi
 
-          echo "DM_CHANNEL: $DM_CHANNEL"
           CHANNEL_ID=$(echo "$DM_CHANNEL" | jq -r '.id')
 
           if [[ -z "$CHANNEL_ID" ]]; then
