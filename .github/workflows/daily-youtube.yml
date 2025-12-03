@@ -54,7 +54,7 @@ jobs:
           fi
 
           # Step 2: Run the script
-          OUTPUT=$(python youtube.py)
+          OUTPUT=$(python youtube.py)  # by saving the output this way, it will not print in the logs
 
           if [[ $? -ne 0 ]]; then
             echo "Error running python script"
@@ -62,7 +62,9 @@ jobs:
           fi
 
           # Step 3: Send DM safely using jq to escape the content
+          set +x  # Disable command echoing (don't show in logs)
           CONTENT=$(printf "Your Daily Subscription Activity:\n\n$OUTPUT" | jq -Rs .)
+          set -x
           
           curl -H "Content-Type: application/json" \
           -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
