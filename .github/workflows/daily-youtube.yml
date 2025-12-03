@@ -65,7 +65,7 @@ jobs:
           fi
 
           # Step 3: Send DM safely using jq to escape the content
-          CONTENT=$(echo "Your Daily Subscription Activity:\n\n$OUTPUT" | jq -Rs .)
+          CONTENT=$($OUTPUT | jq -Rs .)
           
           curl -H "Content-Type: application/json" \
           -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
