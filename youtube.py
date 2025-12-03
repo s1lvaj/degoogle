@@ -48,7 +48,7 @@ def get_channel_info(
                 if video_published < published_after:  # if the video is older than 1 day, we don't want it
                     break
 
-                new_body += f"{name}: {video_title}, watch?v={video_id}\n"
+                new_body += f"{name}: {video_title} #watch?v={video_id}\n"
                 i += 1
             except:
                 break
@@ -106,5 +106,6 @@ if __name__ == '__main__':
 
     GROUPS = json.loads(os.getenv("CHANNEL_GROUPS"))  # I'll fetch it directly from my environmental variables, as a json
 
-    body = get_channel_groups_info(GROUPS)
+    body = "Your Daily Subscription Activity:\n\n"
+    body += get_channel_groups_info(GROUPS)
     print(body)
