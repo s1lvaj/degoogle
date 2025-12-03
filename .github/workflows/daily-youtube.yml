@@ -71,7 +71,7 @@ jobs:
           
           CONTENT=$(echo "$OUTPUT" | jq -Rs .)
           
-          curl -H "Content-Type: application/json" \
+          curl -s -H "Content-Type: application/json" \
           -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
           -X POST \
           -d "{\"content\": $CONTENT}" \
