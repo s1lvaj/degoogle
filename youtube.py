@@ -48,7 +48,7 @@ def get_channel_info(
                 if video_published < published_after:  # if the video is older than 1 day, we don't want it
                     break
 
-                new_body += f"{name}: {video_title}, https://www.youtube.com/watch?v={video_id}\n"
+                new_body += f"{name}: {video_title}, watch?v={video_id}\n"
                 i += 1
             except:
                 break
