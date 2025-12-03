@@ -34,7 +34,7 @@ jobs:
 
       - name: Run script
         run: |
-          
+          set +x  # Disable command echoing (don't show in logs)
           # Step 1: Create DM Channel
           DM_CHANNEL=$(curl -s -X POST "https://discord.com/api/v10/users/@me/channels" \
           -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
@@ -54,7 +54,7 @@ jobs:
           fi
 
           # Step 2: Run the script
-          OUTPUT=$(python youtube.py)  # by saving the output this way, it will not print in the logs
+          OUTPUT=$(python youtube.py)
 
           if [[ $? -ne 0 ]]; then
             echo "Error running python script"
@@ -62,9 +62,7 @@ jobs:
           fi
 
           # Step 3: Send DM safely using jq to escape the content
-          set +x  # Disable command echoing (don't show in logs)
           CONTENT=$(printf "Your Daily Subscription Activity:\n\n$OUTPUT" | jq -Rs .)
-          set -x
           
           curl -H "Content-Type: application/json" \
           -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
@@ -77,5 +75,6 @@ jobs:
             exit 1
           fi
 
+          set -x
           echo "Script executed successfully"
           exit 0
