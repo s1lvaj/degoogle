@@ -48,13 +48,13 @@ def get_channel_info(
                 if video_published < published_after:  # if the video is older than 1 day, we don't want it
                     break
 
-                new_body += f"{name}: {video_title} #watch?v={video_id}\n"
+                new_body += f"**{name}**: {video_title} #watch?v={video_id}\n"
                 i += 1
             except:
                 break
     
     if new_body != "":  # there's information to be added
-        body += f"{title}:\n{new_body}\n"  # extra blank line at the end
+        body += f"**{title}:**\n{new_body}\n"  # extra blank line at the end
 
     return body
 
@@ -79,33 +79,9 @@ def get_channel_groups_info(channel_groups: dict):
 
 
 if __name__ == '__main__':
-
-    """
-    EXAMPLE:
-
-    stem = {
-        "3Blue1Brown": "UCYO_jab_esuFRV4b17AJtAw",
-        "Aleph 0": "UCzBjutX2PmitNF4avysL-vg",
-        "Andrew Dotson": "UCnFmWQbVW_YbqPQZGNuq8sA",
-        "Domain of Science": "UCxqAWLTk1CmBvZFPzeZMd9A",
-        "Fireship": "UCsBjURrPoezykLs9EqgamOA",
-        "Kyle Hill": "UCFbtcTaMFnOAP0pFO1L8hVw",
-        "Kurzgesagt": "UCsXVk37bltHxD1rDPwtNM8Q",
-        "ScienceClic English": "UCWvq4kcdNI1r1jZKFw9TiUA",
-        "Veritasium": "UCHnyfMqiRRG1u-2MsSQLbXA",
-        "VSauce": "UC6nSFpj9HTCZ5t-N3Rm3-HA",
-        "Zach Star": "UCpCSAcbqs-sjEVfk_hMfY9w",
-    }
-
-    other = {
-        "": "",
-    }
-
-    groups = {'STEM': stem, 'Other Channels': other}
-    """
-
     GROUPS = json.loads(os.getenv("CHANNEL_GROUPS"))  # I'll fetch it directly from my environmental variables, as a json
 
-    body = "Your Daily Subscription Activity:\n\n"
+    body = "**Your Daily Subscription Activity:**\n\n"
     body += get_channel_groups_info(GROUPS)
+    
     print(body)

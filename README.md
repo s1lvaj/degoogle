@@ -75,6 +75,21 @@ def send_email(
     return
 ```
 
+And below is an example of a `CHANNEL_GROUPS` json for you to run the youtube code.
+
+```json
+{
+  "Science": {
+    "3Blue1Brown": "UCYO_jab_esuFRV4b17AJtAw",
+    "Veritasium": "UCHnyfMqiRRG1u-2MsSQLbXA",
+    "VSauce": "UC6nSFpj9HTCZ5t-N3Rm3-HA"
+  },
+  "Tech": {
+    "Fireship": "UCsBjURrPoezykLs9EqgamOA"
+  }
+}
+```
+
 ## 7. MPV on Windows
 
 If you don't wanna open youtube directly to watch the videos, mpv is a great alternative: https://mpv.io/installation/
