@@ -34,7 +34,7 @@ jobs:
 
       - name: Run script
         run: |
-          set +x  # Disable command echoing (don't show in logs)
+          set -x  # Disable command echoing (don't show in logs)
           
           # Step 1: Create DM Channel
           
