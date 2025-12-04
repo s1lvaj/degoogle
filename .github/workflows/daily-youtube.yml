@@ -34,12 +34,15 @@ jobs:
 
       - name: Run script
         run: |
-          set +x  # Disable command echoing (don't show in logs)
+          echo "Command echoing will be disabled (won't show in logs) for privacy."
+          set +x
+
+          echo "Creating a DM Channel and Getting its ID (doing this intead of messaging the bot and then using the same method to get the user ID, as another example)."
 
           DM_CHANNEL=$(curl -s -X POST "https://discord.com/api/v10/users/@me/channels" \
           -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
           -H "Content-Type: application/json" \
-          -d "{\"recipient_id\": \"$DISCORD_USER_ID\"}")  # Create a DM channel and get its ID
+          -d "{\"recipient_id\": \"$DISCORD_USER_ID\"}")
 
           if [[ $? -ne 0 ]]; then
             set -x
@@ -47,15 +50,17 @@ jobs:
             exit 1
           fi
 
-          CHANNEL_ID=$(echo "$DM_CHANNEL" | jq -r '.id')  # Could also get the Channel ID by messaging the bot and then using the same method I did to get the user ID, but this also serves as a tutorial
-
           if [[ -z "$CHANNEL_ID" ]]; then
             set -x
             echo "Failed to retrieve channel ID"
             exit 1
           fi
 
-          OUTPUT=$(python youtube.py)  # Run youtube.py and save the result in OUTPUT
+          echo "Running the python script!"
+
+          OUTPUT=$(python youtube.py)
+
+          echo "Finished running the script and saved as OUTPUT."
 
           if [[ $? -ne 0 ]]; then
             set -x
@@ -65,11 +70,13 @@ jobs:
           
           CONTENT=$(echo "$OUTPUT" | jq -Rs .)
 
+          echo "Sending message with the content (using curl -s -o /dev/null to silence and discard output)."
+
           curl -s -o /dev/null \
           -X POST "https://discord.com/api/v10/channels/$CHANNEL_ID/messages" \
           -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
           -H "Content-Type: application/json" \
-          -d "{"content": "$CONTENT"}"  # Send DM message with the content
+          -d "{"content": "$CONTENT"}"
 
           if [[ $? -ne 0 ]]; then
             set -x
