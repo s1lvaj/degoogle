@@ -78,6 +78,16 @@ def get_channel_groups_info(channel_groups: dict) -> str:
 if __name__ == '__main__':
     # Fetch CHANNEL_GROUPS from environment variables
     GROUPS = json.loads(os.getenv("CHANNEL_GROUPS", '{}'))  # Default to empty if not set
+    GROUPS = {
+  "Science": {
+    "3Blue1Brown": "UCYO_jab_esuFRV4b17AJtAw",
+    "Veritasium": "UCHnyfMqiRRG1u-2MsSQLbXA",
+    "VSauce": "UC6nSFpj9HTCZ5t-N3Rm3-HA"
+  },
+  "Tech": {
+    "Fireship": "UCsBjURrPoezykLs9EqgamOA"
+  }
+}
 
     body = "Your Daily Subscription Activity:\n\n"
     body += get_channel_groups_info(GROUPS)
