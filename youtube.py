@@ -2,9 +2,7 @@ import urllib.request
 import time
 import json
 import os
-import smtplib
-from email.mime.text import MIMEText
-import xmltodict
+from xmltodict import parse
 
 
 def get_channel_info(
@@ -34,16 +32,15 @@ def get_channel_info(
 
     new_body = ""
     for name in channels.keys():
+        url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channels[name]}"
         i = 0
         while True:
             try:
-                url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channels[name]}"
-                data = urllib.request.urlopen(url)
-                data_read = data.read().decode('utf-8')
-                data_parsed = xmltodict.parse(data_read)
-                video_title = data_parsed['feed']['entry'][i]['title']
-                video_id = data_parsed['feed']['entry'][i]['yt:videoId']
-                video_published = data_parsed['feed']['entry'][i]['published']
+                response = urllib.request.urlopen(url)
+                response_parsed = parse(response.read().decode('utf-8'))
+                video_title = response_parsed['feed']['entry'][i]['title']
+                video_id = response_parsed['feed']['entry'][i]['yt:videoId']
+                video_published = response_parsed['feed']['entry'][i]['published']
 
                 if video_published < published_after:  # if the video is older than 1 day, we don't want it
                     break
@@ -72,14 +69,15 @@ def get_channel_groups_info(channel_groups: dict):
 
     body = ""
 
-    for group in channel_groups.keys():
-        body = get_channel_info(channel_groups[group], group, body)
+    for group_title, channels in channel_groups.keys():
+        body = get_channel_info(channels, group_title, body)
 
     return body
 
 
 if __name__ == '__main__':
-    GROUPS = json.loads(os.getenv("CHANNEL_GROUPS"))  # I'll fetch it directly from my environmental variables, as a json
+    # Fetch CHANNEL_GROUPS from environment variables
+    GROUPS = json.loads(os.getenv("CHANNEL_GROUPS", '{}'))  # Default to empty if not set
 
     body = "**Your Daily Subscription Activity:**\n\n"
     body += get_channel_groups_info(GROUPS)
