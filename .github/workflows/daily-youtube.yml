@@ -70,6 +70,12 @@ jobs:
           # Step 3: Send DM safely using jq to escape the content
           
           CONTENT=$(echo "$OUTPUT" | jq -Rs .)
+
+          echo "CONTENT to be sent: $CONTENT"
+          echo "Using channel ID: $CHANNEL_ID"
+          echo "Bot token starts with: ${DISCORD_BOT_TOKEN:0:10}..."
+          ESCAPED_CONTENT=$(echo "$CONTENT" | jq -Rs .)
+          echo "Escaped content: $ESCAPED_CONTENT"
           
           curl -s -o /dev/null -w "%{http_code}" \  # -s = silent, -o /dev/null = discard output
           -H "Content-Type: application/json" \
