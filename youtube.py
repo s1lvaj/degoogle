@@ -45,13 +45,13 @@ def get_channel_info(
                 if video_published < published_after:  # if the video is older than 1 day, we don't want it
                     break
 
-                new_body += f"{name}: {video_title} #watch?v={video_id}\n"
+                new_body += f"**{name}:** {video_title} #watch?v={video_id}\n"
                 i += 1
             except:
                 break
     
     if new_body != "":  # there's information to be added
-        body += f"{title}:\n{new_body}\n"  # extra blank line at the end
+        body += f"**{title}:**\n{new_body}\n"  # extra blank line at the end
 
     return body
 
@@ -78,18 +78,8 @@ def get_channel_groups_info(channel_groups: dict) -> str:
 if __name__ == '__main__':
     # Fetch CHANNEL_GROUPS from environment variables
     GROUPS = json.loads(os.getenv("CHANNEL_GROUPS", '{}'))  # Default to empty if not set
-    GROUPS = {
-  "Science": {
-    "3Blue1Brown": "UCYO_jab_esuFRV4b17AJtAw",
-    "Veritasium": "UCHnyfMqiRRG1u-2MsSQLbXA",
-    "VSauce": "UC6nSFpj9HTCZ5t-N3Rm3-HA"
-  },
-  "Tech": {
-    "Fireship": "UCsBjURrPoezykLs9EqgamOA"
-  }
-}
 
-    body = "Your Daily Subscription Activity:\n\n"
+    body = "**Your Daily Subscription Activity:**\n\n"
     body += get_channel_groups_info(GROUPS)
     
     print(body)
