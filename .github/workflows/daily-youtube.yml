@@ -76,6 +76,8 @@ jobs:
           echo "Bot token starts with: ${DISCORD_BOT_TOKEN:0:10}..."
           ESCAPED_CONTENT=$(echo "$CONTENT" | jq -Rs .)
           echo "Escaped content: $ESCAPED_CONTENT"
+
+          echo "curl -s -o /dev/null -w '%{http_code}' -H 'Content-Type: application/json' -H 'Authorization: Bot $DISCORD_BOT_TOKEN' -X POST -d '{\"content\": $ESCAPED_CONTENT}' https://discord.com/api/v10/channels/$CHANNEL_ID/messages"
           
           curl -w "%{http_code}" \  # -s = silent, -o /dev/null = discard output
           -H "Content-Type: application/json" \
