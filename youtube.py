@@ -31,8 +31,8 @@ def get_channel_info(
         body += f"{e}"
 
     new_body = ""
-    for name in channels.keys():
-        url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channels[name]}"
+    for name, channel in channels.items():
+        url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channel}"
         i = 0
         while True:
             try:
@@ -69,7 +69,7 @@ def get_channel_groups_info(channel_groups: dict) -> str:
 
     body = ""
 
-    for group_title, channels in channel_groups.keys():
+    for group_title, channels in channel_groups.items():
         body = get_channel_info(channels, group_title, body)
 
     return body
