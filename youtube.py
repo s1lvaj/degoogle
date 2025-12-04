@@ -9,7 +9,7 @@ def get_channel_info(
         channels: dict,
         title: str,
         body: str,
-):
+) -> str:
     """
     Get information from the channels, and form a message with the information.
 
@@ -56,7 +56,7 @@ def get_channel_info(
     return body
 
 
-def get_channel_groups_info(channel_groups: dict):
+def get_channel_groups_info(channel_groups: dict) -> str:
     """
     Get information from the channels, and form a message with the information.
 
