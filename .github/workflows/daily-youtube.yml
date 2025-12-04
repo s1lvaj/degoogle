@@ -71,7 +71,7 @@ jobs:
           
           CONTENT=$(echo "$OUTPUT" | jq -Rs .)
 
-          curl \  # -s = silent, -o /dev/null = discard output
+          curl -v \  # -s = silent, -o /dev/null = discard output
           -X POST "https://discord.com/api/v10/channels/$CHANNEL_ID/messages" \
           -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
           -H "Content-Type: application/json" \
