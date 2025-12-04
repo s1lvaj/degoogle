@@ -32,11 +32,13 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      # I'll start by using set +x to disable command echoing (don't show in logs).
+      # As a first step, I'll create a DM Channel and get its ID (I could also get the Channel ID by messaging the bot and then using the same method I did to get the user ID, but this also serves as a tutorial).
+      # As a second step, I'll run the youtube.py script and save the result (the body we print) in the OUTPUT variable.
+      # As a third step, I'll DM me the content using curl, with -s = silent, -o /dev/null = discard output.
       - name: Run script
         run: |
-          set +x  : # Disable command echoing (don't show in logs)
-          
-          : # Step 1: Create DM Channel
+          set +x
           
           DM_CHANNEL=$(curl -s -X POST "https://discord.com/api/v10/users/@me/channels" \
           -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
@@ -49,7 +51,6 @@ jobs:
             exit 1
           fi
 
-          : # I could also get the Channel ID by messaging the bot and then using the same method I did to get the user ID, but this also serves as a tutorial
           CHANNEL_ID=$(echo "$DM_CHANNEL" | jq -r '.id')
 
           if [[ -z "$CHANNEL_ID" ]]; then
@@ -58,8 +59,6 @@ jobs:
             exit 1
           fi
 
-          : # Step 2: Run the script
-          
           OUTPUT=$(python youtube.py)
 
           if [[ $? -ne 0 ]]; then
@@ -67,12 +66,9 @@ jobs:
             echo "Error running python script"
             exit 1
           fi
-
-          : # Step 3: Send DM safely using jq to escape the content
           
           CONTENT=$(echo "$OUTPUT" | jq -Rs .)
 
-          : # -s = silent, -o /dev/null = discard output (if I wanted the output, I could even include -v = verbose)
           curl -s -o /dev/null \
           -X POST "https://discord.com/api/v10/channels/$CHANNEL_ID/messages" \
           -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
