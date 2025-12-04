@@ -77,7 +77,7 @@ jobs:
           ESCAPED_CONTENT=$(echo "$CONTENT" | jq -Rs .)
           echo "Escaped content: $ESCAPED_CONTENT"
           
-          curl -s -o /dev/null -w "%{http_code}" \  # -s = silent, -o /dev/null = discard output
+          curl -w "%{http_code}" \  # -s = silent, -o /dev/null = discard output
           -H "Content-Type: application/json" \
           -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
           -X POST \
