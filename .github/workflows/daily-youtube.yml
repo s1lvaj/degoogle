@@ -32,18 +32,14 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      # I'll start by using set +x to disable command echoing (don't show in logs).
-      # As a first step, I'll create a DM Channel and get its ID (I could also get the Channel ID by messaging the bot and then using the same method I did to get the user ID, but this also serves as a tutorial).
-      # As a second step, I'll run the youtube.py script and save the result (the body we print) in the OUTPUT variable.
-      # As a third step, I'll DM me the content using curl, with -s = silent, -o /dev/null = discard output.
       - name: Run script
         run: |
-          set +x
-          
+          set +x  # Disable command echoing (don't show in logs)
+
           DM_CHANNEL=$(curl -s -X POST "https://discord.com/api/v10/users/@me/channels" \
           -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
           -H "Content-Type: application/json" \
-          -d "{\"recipient_id\": \"$DISCORD_USER_ID\"}")
+          -d "{\"recipient_id\": \"$DISCORD_USER_ID\"}")  # Create a DM channel and get its ID
 
           if [[ $? -ne 0 ]]; then
             set -x
@@ -51,7 +47,7 @@ jobs:
             exit 1
           fi
 
-          CHANNEL_ID=$(echo "$DM_CHANNEL" | jq -r '.id')
+          CHANNEL_ID=$(echo "$DM_CHANNEL" | jq -r '.id')  # Could also get the Channel ID by messaging the bot and then using the same method I did to get the user ID, but this also serves as a tutorial
 
           if [[ -z "$CHANNEL_ID" ]]; then
             set -x
@@ -59,7 +55,7 @@ jobs:
             exit 1
           fi
 
-          OUTPUT=$(python youtube.py)
+          OUTPUT=$(python youtube.py)  # Run youtube.py and save the result in OUTPUT
 
           if [[ $? -ne 0 ]]; then
             set -x
@@ -73,7 +69,7 @@ jobs:
           -X POST "https://discord.com/api/v10/channels/$CHANNEL_ID/messages" \
           -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
           -H "Content-Type: application/json" \
-          -d "{"content": "$CONTENT"}"
+          -d "{"content": "$CONTENT"}"  # Send DM message with the content
 
           if [[ $? -ne 0 ]]; then
             set -x
