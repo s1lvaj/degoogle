@@ -50,6 +50,8 @@ jobs:
             exit 1
           fi
 
+          CHANNEL_ID=$(echo "$DM_CHANNEL" | jq -r '.id')
+
           if [[ -z "$CHANNEL_ID" ]]; then
             set -x
             echo "Failed to retrieve channel ID"
