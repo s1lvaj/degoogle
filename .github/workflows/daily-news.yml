@@ -2,7 +2,7 @@ name: Run News Script Daily
 
 on:
   schedule:
-    - cron: "30 19 * * *"   # Runs every day at 16:00 UTC
+    - cron: "0 7 * * *"   # Runs every day at 07:00 UTC
   workflow_dispatch:
     inputs:
       environment:
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      CHANNEL_GROUPS: ${{ secrets.RSS_NEWS_WEBSITES }}   # JSON secret
+      RSS_NEWS_WEBSITES: ${{ secrets.RSS_NEWS_WEBSITES }}   # JSON secret
       DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}  # Bot I created by using discord for developers
       DISCORD_USER_ID: ${{ secrets.DISCORD_USER_ID }}  # My discord user ID (you can get it by going to settings > advanced > enable developer mode > right click a user)
     
