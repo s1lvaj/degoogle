@@ -1,0 +1,91 @@
+name: Run News Script Daily
+
+on:
+  schedule:
+    - cron: "30 19 * * *"   # Runs every day at 16:00 UTC
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy'
+        required: true
+        default: 'development'
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    env:
+      CHANNEL_GROUPS: ${{ secrets.RSS_NEWS_WEBSITES }}   # JSON secret
+      DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}  # Bot I created by using discord for developers
+      DISCORD_USER_ID: ${{ secrets.DISCORD_USER_ID }}  # My discord user ID (you can get it by going to settings > advanced > enable developer mode > right click a user)
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run script
+        run: |
+          echo "Command echoing will be disabled (won't show in logs) for privacy."
+          set +x
+
+          echo "Creating a DM Channel and Getting its ID (doing this intead of messaging the bot and then using the same method to get the user ID, as another example)."
+
+          DM_CHANNEL=$(curl -s -X POST "https://discord.com/api/v10/users/@me/channels" \
+          -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
+          -H "Content-Type: application/json" \
+          -d "{\"recipient_id\": \"$DISCORD_USER_ID\"}")
+
+          if [[ $? -ne 0 ]]; then
+            set -x
+            echo "Error creating DM channel"
+            exit 1
+          fi
+
+          CHANNEL_ID=$(echo "$DM_CHANNEL" | jq -r '.id')
+
+          if [[ -z "$CHANNEL_ID" ]]; then
+            set -x
+            echo "Failed to retrieve channel ID"
+            exit 1
+          fi
+
+          echo "Running the python script!"
+
+          OUTPUT=$(python rss_news.py)
+
+          echo "Finished running the script and saved as OUTPUT."
+
+          if [[ $? -ne 0 ]]; then
+            set -x
+            echo "Error running python script"
+            exit 1
+          fi
+          
+          CONTENT=$(echo "$OUTPUT" | jq -Rs .)
+
+          echo "Sending message with the content (using curl -s -o /dev/null to silence and discard output)."
+
+          curl -s -o /dev/null \
+          -X POST "https://discord.com/api/v10/channels/$CHANNEL_ID/messages" \
+          -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
+          -H "Content-Type: application/json" \
+          -d "{\"content\": $CONTENT}"
+
+          if [[ $? -ne 0 ]]; then
+            set -x
+            echo "Error sending DM message"
+            exit 1
+          fi
+
+          set -x
+          echo "Script executed successfully"
+          exit 0
