@@ -63,7 +63,7 @@ if __name__ == '__main__':
     # Fetch RSS_NEWS_WEBSITES from environment variables
     RSS_NEWS_WEBSITES = json.loads(os.getenv("RSS_NEWS_WEBSITES", '{}'))  # Default to empty if not set
 
-    body = "Some News From Today:\n\n"
+    body = "**Some News From Today:**\n\n"
     body += get_news(RSS_NEWS_WEBSITES)
 
     print(body)
