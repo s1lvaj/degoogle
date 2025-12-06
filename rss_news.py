@@ -2,65 +2,68 @@ import urllib.request
 import time
 import json
 import os
-import smtplib
-from email.mime.text import MIMEText
-import xmltodict
+from xmltodict import parse
 
 
 def get_news(
-        rss_url: str,
-        title: str,
-        body: str,
+        urls: dict,
 ):
     """
     Get information from the news source, and form a message to be sent.
 
     Args:
-        rss_url: String of the news rss website whose content you want.
-        title: String of this section for the email.
-        body: String with the current body of the email, to which the new information will be appended.
+        urls: Dictionary with the new's site name and their rss-feed url.
     
     Returns:
-        body: String with the updated body of the email.
+        body: String with the updated body of the message.
     """
 
+    body = ""
+
     try:
-        # Compute 25h30min ago in RFC3339 format (github actions can take quite a long time to run)
+        # Compute 12h ago in RFC3339 format
         published_after = time.strftime(
-            "%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - (25 * 60 * 60) - (30 * 60))
+            "%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - (12 * 60 * 60))
         )
     except Exception as e:
         body += f"{e}"
 
-    new_body = ""
+    for name, rss_url in urls.items():
+        new_body = ""
+        response = urllib.request.urlopen(rss_url)
+        response_parsed = parse(response.read().decode('utf-8'))
 
-    try:
-        response = json.load(urllib.request.urlopen(rss_url))
-        content = ""  # GET THE CONTENT
-        new_body += f"{content}\n"
-    except:
-        pass
-    
-    if new_body != "":  # there's information to be added
-        body += f"{title}:\n{new_body}\n"  # extra blank line at the end
+        try:
+            i = 0
+            while True:
+                news_title = response_parsed['rss']['channel']['item'][i]['title']
+                news_published_str = response_parsed['rss']['channel']['item'][i]['pubDate']
+                news_published_obj = time.strptime(news_published_str, "%a, %d %b %Y %H:%M:%S +0000")
+                news_published = time.strftime("%Y-%m-%dT%H:%M:%SZ", news_published_obj)
 
-    print("Done " + title)
+                if news_published < published_after:
+                    break  # if the news is older than 1 day, we don't want it
+                
+                new_body += f"{news_title}\n"
+                i += 1
+
+                if i == 7:
+                    break
+        except:
+            pass
+
+        if new_body != "":  # there's information to be added
+            body += f"**{name}:**\n{new_body}\n"
 
     return body
 
 
 if __name__ == '__main__':
     
-    body = ""
+    # Fetch RSS_NEWS_WEBSITES from environment variables
+    RSS_NEWS_WEBSITES = json.loads(os.getenv("RSS_NEWS_WEBSITES", '{}'))  # Default to empty if not set
 
-    # SOME GENERAL NEWS
-    body = get_news('https://www.rtp.pt/noticias/rss/pais', 'RTP Noticias Portugal', body)  # example of the rss of rtp, a portuguese news source
-    body = get_news('https://www.rtp.pt/noticias/rss/mundo', 'RTP Noticias Mundo', body)
-    body = get_news('https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml', 'RTP Noticias Portugal', body)  # example of the rss of another news source
-    body = get_news('https://rss.nytimes.com/services/xml/rss/nyt/World.xml', 'RTP Noticias Mundo', body)
+    body = "Some News From Today:\n\n"
+    body += get_news(RSS_NEWS_WEBSITES)
 
-    # SOME PURELY POSITIVE NEWS
-    body = get_news('https://www.goodnewsnetwork.org/category/news/world/feed/', 'Good News World', body)
-    body = get_news('https://www.goodnewsnetwork.org/category/news/science/feed/', 'Good News Science', body)
-    body = get_news('https://www.goodnewsnetwork.org/category/news/health/feed/', 'Good News Health', body)
-    body = get_news('https://www.goodnewsnetwork.org/category/news/inspiring/feed/', 'Good News Inspiring', body)
+    print(body)

@@ -15,11 +15,11 @@ def get_channel_info(
 
     Args:
         channels: Dictionary with the channel's name and their channel id.
-        title: String of this section for the email.
-        body: String with the current body of the email, to which the new information will be appended.
+        title: String of this section of the message.
+        body: String with the current body of the message, to which the new information will be appended.
     
     Returns:
-        body: String with the updated body of the email.
+        body: String with the updated body of the message.
     """
 
     try:
@@ -53,7 +53,7 @@ def get_channel_info(
                 
                 i += 1
         except:
-            break
+            pass
     
     if new_body != "":  # there's information to be added
         body += f"**{title}:**\n{new_body}\n"  # extra blank line at the end
@@ -72,7 +72,7 @@ def get_channel_groups_info(channel_groups: dict) -> str:
         body: String with the updated body of the email.
     """
 
-    body = ""
+    body = "**Your Daily Subscription Activity:**\n\n"
 
     for group_title, channels in channel_groups.items():
         body = get_channel_info(channels, group_title, body)
@@ -84,7 +84,6 @@ if __name__ == '__main__':
     # Fetch CHANNEL_GROUPS from environment variables
     GROUPS = json.loads(os.getenv("CHANNEL_GROUPS", '{}'))  # Default to empty if not set
 
-    body = "**Your Daily Subscription Activity:**\n\n"
-    body += get_channel_groups_info(GROUPS)
+    body = get_channel_groups_info(GROUPS)
     
     print(body)
