@@ -26,7 +26,7 @@ Protonmail can also be a solution when it comes to calendar and cloud storage (h
 
 ## 5. Maps
 
-Very hard to replace. Apple Maps is safer than Google Maps. But opensource alternatives can also be good to look at.
+Very hard to replace. Apple Maps is safer than Google Maps. But opensource alternatives can also be good to look at. However, when traveling to a country you've never been in, Google Maps with location on, as well as Google Lens/Translate, can be useful.
 
 ## 6. Content
 
@@ -118,3 +118,5 @@ If all of these steps have been completed, you are already way better when it co
 Using apps like signal to commnicate, instead of whatsapp, could also be good, but it isn't critical, like using Tor as your default browser, encrypting all your email and information, only using cash to pay for things, etc. It can be overkill unless you are an activist. The same with turning off you internet when not using it, keep in touch with tech news, and even change to better options if they appear.
 
 And not really regarding pc/phone stuff, it is crucial that you buy products that you can own. Buying a futuristic car can be fun, but if it can be hacked, locks you in for software updates, or locks functions behind a subscription, is it really worth it? You deserve to not watch an ad every time you reach a red light. Research before investing into it.
+
+And when buying somthing, using a one-time phone number/email and a one-time card can be crucial.
