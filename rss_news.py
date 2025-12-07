@@ -42,7 +42,7 @@ def get_news(
                 news_published = time.strftime("%Y-%m-%dT%H:%M:%SZ", news_published_obj)
 
                 if news_published < published_after:
-                    break  # if the news is older than 1 day, we don't want it
+                    break  # if the news is older than 12h, we don't want it
                 
                 new_body += f"{news_title}\n"
                 i += 1
