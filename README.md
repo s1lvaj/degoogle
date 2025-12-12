@@ -26,7 +26,7 @@ Protonmail can also be a solution when it comes to calendar and cloud storage (h
 
 ## 5. Maps
 
-Very hard to replace. Apple Maps is safer than Google Maps. But opensource alternatives can also be good to look at. However, when traveling to a country you've never been in, Google Maps with location on, as well as Google Lens/Translate, can be useful.
+Very hard to replace. Apple Maps is safer than Google Maps. But opensource alternatives can also be good to look at.
 
 ## 6. Content
 
