@@ -20,13 +20,10 @@ def get_news(
 
     body = ""
 
-    try:
-        # Compute 12h ago in RFC3339 format
-        published_after = time.strftime(
-            "%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - (12 * 60 * 60))
-        )
-    except Exception as e:
-        body += f"{e}"
+    # Compute 12h ago in RFC3339 format
+    published_after = time.strftime(
+        "%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - (12 * 60 * 60))
+    )
 
     for name, rss_url in urls.items():
         new_body = ""
@@ -44,7 +41,7 @@ def get_news(
                 if news_published < published_after:
                     break  # if the news is older than 12h, we don't want it
                 
-                new_body += f"{news_title}\n"
+                new_body += f"- {news_title}\n"
                 i += 1
 
                 if i == 7:

@@ -22,13 +22,10 @@ def get_channel_info(
         body: String with the updated body of the message.
     """
 
-    try:
-        # Compute 25h30min ago in RFC3339 format (github actions can take quite a long time to run)
-        published_after = time.strftime(
-            "%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - (25 * 60 * 60) - (30 * 60))
-        )
-    except Exception as e:
-        body += f"{e}"
+    # Compute 25h30min ago in RFC3339 format (github actions can take quite a long time to run)
+    published_after = time.strftime(
+        "%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - (25 * 60 * 60) - (30 * 60))
+    )
 
     new_body = ""
     for name, channel in channels.items():
@@ -49,7 +46,7 @@ def get_channel_info(
 
                 if '/shorts/' not in response_parsed['feed']['entry'][i]['link']['@href']:
                     # if the video is NOT a youtube short, it is added
-                    new_body += f"**{name}:** {video_title} #watch?v={video_id}\n"
+                    new_body += f"**- {name}:** {video_title} #watch?v={video_id}\n"
                 
                 i += 1
         except:
