@@ -1,0 +1,52 @@
+import os
+from PIL import Image
+import pillow_avif  # required to enable AVIF support
+
+"""
+Script to convert PNG files into a better low-size AVIF file.
+This can be useful for easier storage of photos, which can be the main problem.
+"""
+
+# ----------- SETTINGS -----------
+input_folder = ""               # folder with your PNGs
+output_folder = ""              # folder to save AVIF images
+max_width = 1280                # resize target (e.g., 1280 px wide)
+max_height = 720                # optional limit (keeps aspect ratio)
+avif_quality = 55               # 30–60 is a good range for photos
+# --------------------------------
+
+os.makedirs(output_folder, exist_ok=True)
+
+def downscale(img, max_w, max_h):
+    """Downscale keeping aspect ratio."""
+    img.thumbnail((max_w, max_h), Image.LANCZOS)
+    return img
+
+for file in os.listdir(input_folder):
+    if not (file.lower().endswith(".jpg") or file.lower().endswith(".jpeg") or file.lower().endswith(".png")):
+        continue
+
+    input_path = os.path.join(input_folder, file)
+    output_name = os.path.splitext(file)[0] + ".avif"
+    output_path = os.path.join(output_folder, output_name)
+
+    with Image.open(input_path) as img:
+        # Convert to RGB if it's PNG with alpha (AVIF supports alpha, but RGB is usually smaller)
+        if img.mode not in ("RGB", "L"):
+            img = img.convert("RGB")
+
+        # Resize
+        img = downscale(img, max_width, max_height)
+
+        # Save as AVIF
+        img.save(
+            output_path,
+            format="AVIF",
+            quality=avif_quality,
+            chroma_subsampling="420",   # best for small size
+            lossless=True               # lossy AVIF is smallest
+        )
+
+    print(f"Saved: {output_path}")
+
+print("Done converting all PNGs to AVIF.")
