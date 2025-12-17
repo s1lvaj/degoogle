@@ -31,6 +31,16 @@ for file in os.listdir(input_folder):
     output_path = os.path.join(output_folder, output_name)
 
     with Image.open(input_path) as img:
+
+        # Keep the correct image orientation
+        orientation = img.getexif().get(274)
+        if orientation == 3:  # upside down
+            img = img.rotate(180, expand=True)
+        elif orientation == 6:  # rotated 90 CW
+            img = img.rotate(90, expand=True)
+        elif orientation == 8:  # rotated 270 CW
+            img = img.rotate(-90, expand=True)
+
         # Convert to RGB if it's PNG with alpha (AVIF supports alpha, but RGB is usually smaller)
         if img.mode not in ("RGB", "L"):
             img = img.convert("RGB")
