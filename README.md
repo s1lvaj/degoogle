@@ -109,7 +109,7 @@ The only remaining step is to install yt-dlp (mpv uses it to play youtube urls) 
 
 A final step would be to even ditch windows for linux. This isn't really related to google, but to privacy more in general. Linux ricing and choosing a distribution can also be quite fun, but it requires a lot of work and willingness to learn. However, it will give you much more control over your technology.
 
-Regarding your phone, its operating system is design to distract you, to notify you of things that don't matter, and to make you the product. Changing your operating system to something like GrapheneOS can make you take control of it once again. Apps don't run and see what you do on the background, you can choose what they have access to (even if they have access to the internet or not), you can create different profiles with different apps, etc. Using apps now feels intentional.
+Regarding your phone, its operating system is designed to distract and consume you. Changing your operating system to something like GrapheneOS (in the case of pixel phones) can make you take control of it once again.
 
 ## 9. Next Steps
 
