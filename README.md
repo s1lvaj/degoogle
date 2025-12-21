@@ -1,12 +1,12 @@
-# Why degoogle your life?
+# Why to degoogle your life?
 
-This repository serves as a guide to degoogle your life. This act serves to take control of your software, choosing better (and sometime opensource) alternatives. Technology is supposed to be a helpful tool, also allowing us to consume content, but always as a means to serve and enrich our lives, NEVER in order overwhelm us and consider our life and attention as a market niche to be explored.
+This repository serves as a guide to degoogle your life. This act serves to take control of your software, choosing better (and sometimes opensource) alternatives, making technology a better tool,as it is supposed to be, instead of an overwhelming time sink.
 
 ## 1. Browser and Search Engine
 
-Don't use Google Chrome or Edge. Firefox is a great alternative, as well as Brave. An adblocker is also crucial. Navigating the internet without an adblocker is like crossing the street without looking to both sides. Ads are mostly malware, so you need to be safe.
+Don't use Google Chrome or Microsoft Edge. Firefox is a great alternative, as well as Brave. And be sure you have an adblocker with it, so that you don't have malicious content preying on you.
 
-Then go to your browser settings and change the default search engine to something like duckduckgo, instead of google. It can also help to tell your browser to delete all your cookies, history and data every time you close it.
+Then go to your browser settings and change the default search engine to something like duckduckgo, instead of google. It can also be helpful to setup your browser to delete all your cookies, history and data every time you close it.
 
 Some 5 minutes are enough to do this.
 
@@ -16,9 +16,9 @@ A Virtual Private Network (VPN) is crucial when navigating the internet. Choose 
 
 ## 3. Email
 
-Now we get to the difficult and tedious part, specially if your email is old and has a lot of necessary services linked to it, like government and madical services. Changing from your gmail can be quite difficult, and for these two examples given, maybe seeing your email as a "necessary evil" can be the most sane solution.
+Now we get to the difficult and tedious part, the email. Specially if it is old and has a lot of necessary services linked to it, like government and madical services. Changing from your gmail can be quite difficult, and for these two examples given, maybe seeing your email as a "necessary evil" can be the most sane solution.
 
-Protonmail is a good alternative to google when it comes to email.
+But if you want the challenge, protonmail is a good alternative to google when it comes to email.
 
 ## 4. Calendar and Cloud Storage
 
@@ -26,17 +26,32 @@ Protonmail can also be a solution when it comes to calendar and cloud storage (h
 
 ## 5. Maps
 
-Very hard to replace. Apple Maps is safer than Google Maps. But opensource alternatives can also be good to look at.
+Google maps is very hard to replace. Apple Maps is safer than Google Maps, but opensource alternatives can also be good to look at.
 
 ## 6. Content
 
-You can get content from youtube channels, and even news articles, by using their RSS feeds. The script in this repository can be used for this. This way, you can even navigate youtube with your account turned off. For other news and content, the same can be made.
+You can get content from youtube channels, and even news articles, by using their RSS feeds. The script in this repository can be used for that. This way, you can even navigate youtube with your account turned off. For other news and content, the same can be made.
 
-This repository has github actions running daily scripts to gather the recent news and publications from some online content, and sending them using a personalized telegram/slack/discord bot. With time, you'll see u dont care about some of the channels, and will start removing them from your list.
+This repository has github actions running daily scripts to gather the recent news and publications from some online content, and sending them using a personalized discord bot (but it can also easily be made with telegram, slack, etc.). With time, you'll see you dont care about some of the channels, and will start removing them from your list.
+
+Below is an example of a `CHANNEL_GROUPS` json for you to run the youtube code.
+
+```json
+{
+  "Science": {
+    "3Blue1Brown": "UCYO_jab_esuFRV4b17AJtAw",
+    "Veritasium": "UCHnyfMqiRRG1u-2MsSQLbXA",
+    "VSauce": "UC6nSFpj9HTCZ5t-N3Rm3-HA"
+  },
+  "Tech": {
+    "Fireship": "UCsBjURrPoezykLs9EqgamOA"
+  }
+}
+```
 
 If you wanted to include in your script the function to directly send you an email using a gmail account, that would also be possible with the script below. But since this is a degoogle repository, that option will not be used.
 
-```javascript Sending Email
+```python Sending Email
 def send_email(
         body: str,
         sender_email: str,
@@ -75,21 +90,6 @@ def send_email(
     return
 ```
 
-And below is an example of a `CHANNEL_GROUPS` json for you to run the youtube code.
-
-```json
-{
-  "Science": {
-    "3Blue1Brown": "UCYO_jab_esuFRV4b17AJtAw",
-    "Veritasium": "UCHnyfMqiRRG1u-2MsSQLbXA",
-    "VSauce": "UC6nSFpj9HTCZ5t-N3Rm3-HA"
-  },
-  "Tech": {
-    "Fireship": "UCsBjURrPoezykLs9EqgamOA"
-  }
-}
-```
-
 ## 7. MPV on Windows
 
 If you don't wanna open youtube directly to watch the videos, mpv is a great alternative: https://mpv.io/installation/
@@ -107,16 +107,14 @@ The only remaining step is to install yt-dlp (mpv uses it to play youtube urls) 
 
 ## 8. Operating Systems
 
-A final step would be to even ditch windows for linux. This isn't really related to google, but to privacy more in general. Linux ricing and choosing a distribution can also be quite fun, but it requires a lot of work and willingness to learn. However, it will give you much more control over your technology.
+A final step would be to even ditch windows for linux. This isn't really related to google, but to privacy more in general. Changing to linux requires a lot of work and willingness to learn; however, it will give you much more control over your technology.
 
 Regarding your phone, its operating system is designed to distract and consume you. Changing your operating system to something like GrapheneOS (in the case of pixel phones) can make you take control of it once again.
 
 ## 9. Next Steps
 
-If all of these steps have been completed, you are already way better when it comes to online privacy. Some next steps would be to limit social media usage. While ditching it is not needed, for it can be quite fun to share advetures with friends, it shouldn't define your life, and you should also pay attention to what you post. Do NOT share your entire life, specially with people you do not know. Use different names or personas when possible. Know how to identify scams.
+If all of these steps have been completed, you are already way better when it comes to online privacy. Some next steps would be to limit social media usage. While ditching it is not needed, for it can be quite fun to share advetures with friends, it shouldn't define your life, and you should also pay attention to what you post. Do NOT share your entire life, specially with people you do not know. Also use different names or personas when possible, and know how to identify scams.
 
-Using apps like signal to commnicate, instead of whatsapp, could also be good, but it isn't critical, like using Tor as your default browser, encrypting all your email and information, only using cash to pay for things, etc. It can be overkill unless you are an activist. The same with turning off you internet when not using it, keep in touch with tech news, and even change to better options if they appear.
+Using apps like signal to commnicate, instead of whatsapp, could also be good, but it isn't critical, like using Tor as your default browser, encrypting all your email and information, only using cash to pay for things (or, if buying online, using a one-time phone number/email and a one-time card), etc. It can be overkill unless you are an activist. The same with turning off you internet when not using it, keep in touch with tech news, and even change to better options if they appear.
 
-And not really regarding pc/phone stuff, it is crucial that you buy products that you can own. Buying a futuristic car can be fun, but if it can be hacked, locks you in for software updates, or locks functions behind a subscription, is it really worth it? You deserve to not watch an ad every time you reach a red light. Research before investing into it.
-
-And when buying somthing, using a one-time phone number/email and a one-time card can be crucial.
+The same philosophy can be made, not only to software, but hardware too. Not only on your computer and phone, but also on every product you own. Buying a futuristic car can be fun, but it might not be worth it if it locks functions behind a subscription, and you don't know if future updates will block even more.
