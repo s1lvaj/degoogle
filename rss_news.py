@@ -30,36 +30,41 @@ def get_news(
         response = urllib.request.urlopen(rss_url)
         response_parsed = parse(response.read().decode('utf-8'))
 
-        i = 0
-        while True:
-            try:
-                # get the title, but if there is none, get the description
-                news = response_parsed['rss']['channel']['item'][i]['title']
-            except:
-                news = response_parsed['rss']['channel']['item'][i]['description']
-                news = news[:news.find('\n')]  # limit the size to the content of a single line
+        try:
+            # Try to get the info from this news source
+            i = 0
+            while True:
+                try:
+                    # get the title, but if there is none, get the description
+                    news = response_parsed['rss']['channel']['item'][i]['title']
+                except:
+                    news = response_parsed['rss']['channel']['item'][i]['description']
+                    news = news[:news.find('\n')]  # limit the size to the content of a single line
 
-            news_published_str = response_parsed['rss']['channel']['item'][i]['pubDate']
+                news_published_str = response_parsed['rss']['channel']['item'][i]['pubDate']
 
-            try:
-                # most rss feeds are in one of these 2 time formats
-                news_published_obj = time.strptime(news_published_str, "%a, %d %b %Y %H:%M:%S +0000")
-            except:
-                news_published_obj = time.strptime(news_published_str, "%d %b %Y %H:%M +0000")
-            
-            news_published = time.strftime("%Y-%m-%dT%H:%M:%SZ", news_published_obj)
+                try:
+                    # most rss feeds are in one of these 2 time formats
+                    news_published_obj = time.strptime(news_published_str, "%a, %d %b %Y %H:%M:%S +0000")
+                except:
+                    news_published_obj = time.strptime(news_published_str, "%d %b %Y %H:%M +0000")
+                
+                news_published = time.strftime("%Y-%m-%dT%H:%M:%SZ", news_published_obj)
 
-            if news_published < published_after:
-                break  # if the news is older than 12h, we don't want it
-            
-            new_body += f"- {news}\n"
-            i += 1
+                if news_published < published_after:
+                    break  # if the news is older than 12h, we don't want it
+                
+                new_body += f"- {news}\n"
 
-            if i == 5:
-                break
+                i += 1
+                if i == 5:
+                    break
 
-        if new_body != "":  # there's information to be added
-            body += f"**{name}:**\n{new_body}\n"
+            if new_body != "":  # there's information to be added
+                body += f"**{name}:**\n{new_body}\n"
+
+        except:
+            pass
 
     return body
 
