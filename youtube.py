@@ -34,23 +34,20 @@ def get_channel_info(
         response = urllib.request.urlopen(url)
         response_parsed = parse(response.read().decode('utf-8'))
 
-        try:
-            i = 0
-            while True:
-                video_title = response_parsed['feed']['entry'][i]['title']
-                video_id = response_parsed['feed']['entry'][i]['yt:videoId']
-                video_published = response_parsed['feed']['entry'][i]['published']
+        i = 0
+        while True:
+            video_title = response_parsed['feed']['entry'][i]['title']
+            video_id = response_parsed['feed']['entry'][i]['yt:videoId']
+            video_published = response_parsed['feed']['entry'][i]['published']
 
-                if video_published < published_after:
-                    break  # if the video is older than 1 day, we don't want it
+            if video_published < published_after:
+                break  # if the video is older than 1 day, we don't want it
 
-                if '/shorts/' not in response_parsed['feed']['entry'][i]['link']['@href']:
-                    # if the video is NOT a youtube short, it is added
-                    new_body += f"**{name}:** {video_title} #watch?v={video_id}\n"
-                
-                i += 1
-        except:
-            pass
+            if '/shorts/' not in response_parsed['feed']['entry'][i]['link']['@href']:
+                # if the video is NOT a youtube short, it is added
+                new_body += f"**{name}:** {video_title} #watch?v={video_id}\n"
+            
+            i += 1
     
     if new_body != "":  # there's information to be added
         body += f"**{title}:**\n{new_body}\n"  # extra blank line at the end
