@@ -107,9 +107,9 @@ The only remaining step is to install yt-dlp (mpv uses it to play youtube urls) 
 
 ## 8. Operating Systems
 
-A final step would be to even ditch windows for linux. This isn't really related to google, but to privacy more in general. Changing to linux requires a lot of work and willingness to learn; however, it will give you much more control over your technology.
+A final step would be to even ditch windows for linux. This isn't really related to google, but to privacy more in general. Changing to linux requires a lot of work and willingness to learn; however, it will give you much more control over your technology. A distribution like Ubuntu can be the best to start, since jumping to something like Arch can be quite difficult at the start.
 
-Regarding your phone, its operating system is designed to distract and consume you. Changing your operating system to something like GrapheneOS (in the case of pixel phones) can make you take control of it once again.
+Regarding your phone, its operating system is designed to distract and consume you. Changing your operating system to something like GrapheneOS (in the case of pixel phones), CalyxOS , LineageOS, etc. can make you take control of it once again.
 
 ## 9. Next Steps
 
