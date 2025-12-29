@@ -17,11 +17,6 @@ avif_quality = 55               # 30–60 is a good range for photos
 
 os.makedirs(output_folder, exist_ok=True)
 
-def downscale(img, max_w, max_h):
-    """Downscale keeping aspect ratio."""
-    img.thumbnail((max_w, max_h), Image.LANCZOS)
-    return img
-
 for file in os.listdir(input_folder):
     if not (file.lower().endswith(".jpg") or file.lower().endswith(".jpeg") or file.lower().endswith(".png")):
         continue
@@ -46,7 +41,7 @@ for file in os.listdir(input_folder):
             img = img.convert("RGB")
 
         # Resize
-        img = downscale(img, max_width, max_height)
+        img = img.thumbnail((max_width, max_height), Image.LANCZOS)
 
         # Save as AVIF
         img.save(
@@ -59,4 +54,4 @@ for file in os.listdir(input_folder):
 
     print(f"Saved: {output_path}")
 
-print("Done converting all PNGs to AVIF.")
+print("Done converting all image files.")
