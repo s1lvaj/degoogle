@@ -26,7 +26,7 @@ Protonmail can also be a solution when it comes to calendar and cloud storage (h
 
 ## 5. Maps
 
-Google maps is very hard to replace. Apple Maps is safer than Google Maps, but opensource alternatives can also be good to look at.
+Google maps is very hard to replace. Apple Maps is safer than Google Maps, but opensource alternatives can also be good to look at. Open Street Maps (OSM) is a great collaborative map alternative. For Android, OSMAnd or Organic Maps are great tools, letting you donwload OSM maps in advance, so that you don't have roaming problems, since they are offline.
 
 ## 6. Content
 
