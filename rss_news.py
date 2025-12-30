@@ -41,13 +41,14 @@ def get_news(
                     news = response_parsed['rss']['channel']['item'][i]['description']
                     news = news[:news.find('\n')]  # limit the size to the content of a single line
 
-                news_published_str = response_parsed['rss']['channel']['item'][i]['pubDate']
+                # get the date, ignoring the timezone
+                news_published_str = response_parsed['rss']['channel']['item'][i]['pubDate'][:-6]
 
                 try:
                     # most rss feeds are in one of these 2 time formats
-                    news_published_obj = time.strptime(news_published_str, "%a, %d %b %Y %H:%M:%S +0000")
+                    news_published_obj = time.strptime(news_published_str, "%a, %d %b %Y %H:%M:%S")
                 except:
-                    news_published_obj = time.strptime(news_published_str, "%d %b %Y %H:%M +0000")
+                    news_published_obj = time.strptime(news_published_str, "%d %b %Y %H:%M")
                 
                 news_published = time.strftime("%Y-%m-%dT%H:%M:%SZ", news_published_obj)
 
