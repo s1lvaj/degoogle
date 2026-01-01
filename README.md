@@ -22,7 +22,7 @@ But if you want the challenge, protonmail is a good alternative to google when i
 
 ## 4. Calendar and Cloud Storage
 
-Protonmail can also be a solution when it comes to calendar and cloud storage (however, for projects, creating an opensource github repository can be better, as long as you don't share anything too personal).
+Protonmail can also be a solution when it comes to calendar and cloud storage (however, for projects, creating an opensource github repository can be better, as long as you don't share anything too personal). For family photos and alike, moving them from a format like .png to a modern one like .avif can also help, and a tool to do that can be accessed in the folder `resources`.
 
 ## 5. Maps
 
@@ -103,7 +103,7 @@ The next step is to extract the files to `C:\Program Files\mpv` and add this to 
 4. Add `C:\Program Files\mpv`.
 5. Test it by opening the terminal and typing `mpv --version`. If it prints the version, it works.
 
-The only remaining step is to install yt-dlp (mpv uses it to play youtube urls) by typing `pip install yt-dlp` (it should work by default if you already have python in path). Then, the command `mpv <youtube-link>` should work as intended. It is also possible to record the video with `mpv --stream-record=video.mkv`, although this feature is experimental and may break. The command manual can be seen here: https://mpv.io/manual/stable/
+The only remaining step is to install yt-dlp (mpv uses it to play youtube urls) by typing `pip install yt-dlp` (it should work by default if you already have python in path). Then, the command `mpv <youtube-link>` should work as intended. You can also use `yt-dlp <youtube-link>` to download it directly, and there is a script in the folder `resources` to help you with that.
 
 ## 8. Operating Systems
 
