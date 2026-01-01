@@ -41,7 +41,7 @@ for file in os.listdir(input_folder):
             img = img.convert("RGB")
 
         # Resize
-        img = img.thumbnail((max_width, max_height), Image.LANCZOS)
+        img.thumbnail((max_width, max_height), Image.LANCZOS)
 
         # Save as AVIF
         img.save(
