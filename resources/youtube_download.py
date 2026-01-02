@@ -3,7 +3,7 @@ import time
 
 def main(video, retry_interval=10, max_retries=500):
 
-    if 'youtube' in video:
+    if 'youtube' or 'youtu.be' in video:
         command = 'yt-dlp.exe ' + video
     elif 'watch?v=' in video:
         command = 'yt-dlp.exe youtube.com/' + video
