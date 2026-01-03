@@ -103,7 +103,7 @@ The next step is to extract the files to `C:\Program Files\mpv` and add this to 
 4. Add `C:\Program Files\mpv`.
 5. Test it by opening the terminal and typing `mpv --version`. If it prints the version, it works.
 
-The only remaining step is to install yt-dlp (mpv uses it to play youtube urls) by typing `pip install yt-dlp` (it should work by default if you already have python in path). Then, the command `mpv <youtube-link>` should work as intended. You can also use `yt-dlp <youtube-link>` to download it directly, and there is a script in the folder `resources` to help you with that.
+The only remaining step is to install yt-dlp (mpv uses it to play youtube urls) by typing `pip install yt-dlp` (it should work by default if you already have python in path). Then, the command `mpv <youtube-link>` should work as intended. You can also use `yt-dlp <youtube-link>` to download it directly, and there is a script in the folder `resources` to help you with that. You can even ditch the entire mpv thing and simply use yt-dlp to download the videos, if you prefer to watch them offline.
 
 ## 8. Operating Systems
 
