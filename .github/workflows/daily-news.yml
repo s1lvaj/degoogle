@@ -2,7 +2,7 @@ name: Run News Script Daily
 
 on:
   schedule:
-    - cron: "0 7,19 * * *"   # Runs every day at 07:00 UTC and 19:00 UTC
+    - cron: "0 8,20 * * *"   # Runs every day at 08:00 UTC and 20:00 UTC
   workflow_dispatch:
     inputs:
       environment:
