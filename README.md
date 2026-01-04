@@ -28,7 +28,7 @@ Protonmail can also be a solution when it comes to calendar and cloud storage (h
 
 Google maps is very hard to replace. Apple Maps is safer than Google Maps, but opensource alternatives can also be good to look at. Open Street Maps (OSM) is a great collaborative map alternative. For Android, OSMAnd or Organic Maps are great tools, letting you donwload OSM maps in advance, so that you don't have roaming problems, since they are offline.
 
-## 6. Content
+## 6. Content Feeds
 
 You can get content from youtube channels, and even news articles, by using their RSS feeds. The script in this repository can be used for that. This way, you can even navigate youtube with your account turned off. For other news and content, the same can be made.
 
@@ -90,11 +90,9 @@ def send_email(
     return
 ```
 
-## 7. MPV on Windows
+## 7. Watching Content
 
-If you don't wanna open youtube directly to watch the videos, mpv is a great alternative: https://mpv.io/installation/
-
-This is an opensource multimedia player, working for every type of file, and even youtube links. If you use windows, you can use the link above, or install the `7z` file directly from here: https://github.com/zhongfly/mpv-winbuild/releases
+If you don't want to open youtube directly to watch videos, mpv is a great alternative. This is an opensource multimedia player, working for every type of file, and even youtube links. If you use windows, you can install it in https://mpv.io/, or install the `7z` file directly from here: https://github.com/zhongfly/mpv-winbuild/releases
 
 The next step is to extract the files to `C:\Program Files\mpv` and add this to path. To do that:
 1. Search for `Edit the system environment variables`.
@@ -103,7 +101,7 @@ The next step is to extract the files to `C:\Program Files\mpv` and add this to 
 4. Add `C:\Program Files\mpv`.
 5. Test it by opening the terminal and typing `mpv --version`. If it prints the version, it works.
 
-The only remaining step is to install yt-dlp (mpv uses it to play youtube urls) by typing `pip install yt-dlp` (it should work by default if you already have python in path). Then, the command `mpv <youtube-link>` should work as intended. You can also use `yt-dlp <youtube-link>` to download it directly, and there is a script in the folder `resources` to help you with that. You can even ditch the entire mpv thing and simply use yt-dlp to download the videos, if you prefer to watch them offline.
+The only remaining step is to install yt-dlp (mpv uses it to play youtube urls) by typing `pip install yt-dlp` (it should work by default if you already have python in path). Then, the command `mpv <youtube-link>` should work as intended and play the youtube video. You can also use `yt-dlp <youtube-link>` to download it directly, and there is a script in the folder `resources` to help you with that. You can even ditch the entire mpv installation and simply use yt-dlp to download the videos, if you prefer to watch them offline.
 
 ## 8. Operating Systems
 
