@@ -1,14 +1,18 @@
 import subprocess
 import time
 
-def main(video, retry_interval=10, max_retries=500):
+def main(video, retry_interval=10, max_retries=500, subtitles=False):
+
+    command = 'yt-dlp.exe '
+    if subtitles:
+        command += '--write-subs --sub-lang en --embed-subs '
 
     if ('youtube' or 'youtu.be') in video:
-        command = 'yt-dlp.exe ' + video
+        command += video
     elif 'watch?v=' in video:
-        command = 'yt-dlp.exe youtube.com/' + video
+        command += 'youtube.com/' + video
     else:
-        command = 'yt-dlp.exe youtube.com/watch?v=' + video
+        command += 'youtube.com/watch?v=' + video
 
     count = 0
 
@@ -53,4 +57,4 @@ if __name__ == "__main__":
     videos = ['...']
 
     for video in videos:
-        main(video)
+        main(video, subtitles=False)
