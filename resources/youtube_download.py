@@ -31,7 +31,7 @@ def main(video, retry_interval=10, max_retries=500, subtitles=False):
                     break
                 if output:
                     print(output.strip())
-                if 'ERROR' in output.upper():
+                if 'ERROR: ' in output:
                     error_flag = True
 
             # Check for the presence of "ERROR" in the output
