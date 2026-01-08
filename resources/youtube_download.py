@@ -7,7 +7,7 @@ def main(video, retry_interval=10, max_retries=500, subtitles=False):
     if subtitles:
         command += '--write-subs --sub-lang en --embed-subs '
 
-    if ('youtube' or 'youtu.be') in video:
+    if ('youtube' in video) or ('youtu.be' in video):
         command += video
     elif 'watch?v=' in video:
         command += 'youtube.com/' + video
