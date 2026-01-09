@@ -12,7 +12,7 @@ Some 5 minutes are enough to do this.
 
 ## 2. VPN
 
-A Virtual Private Network (VPN) is crucial when navigating the internet. Choose a safe one and use it.
+A Virtual Private Network (VPN) is crucial when navigating the internet. Choose a safe one and use it. It will NOT make you invisible. However, it might be good if your goal is to not let corporations know who you are, where you're from, nor what to do with your data.
 
 ## 3. Email
 
@@ -113,6 +113,6 @@ Regarding your phone, its operating system is designed to distract and consume y
 
 If all of these steps have been completed, you are already way better when it comes to online privacy. Some next steps would be to limit social media usage. While ditching it is not needed, for it can be quite fun to share advetures with friends, it shouldn't define your life, and you should also pay attention to what you post. Do NOT share your entire life, specially with people you do not know. Also use different names or personas when possible, and know how to identify scams.
 
-Using apps like signal to commnicate, instead of whatsapp, could also be good, but it isn't critical, like using Tor as your default browser, encrypting all your email and information, only using cash to pay for things (or, if buying online, using a one-time phone number/email and a one-time card), etc. It can be overkill unless you are an activist. The same with turning off you internet when not using it, keep in touch with tech news, and even change to better options if they appear.
+Using apps like signal to commnicate, instead of whatsapp, could also be good, but it isn't critical, like using Tor as your default browser (avoid using a VPN here, since Tor already hiddes you, so a VPN only calls attention to yourself), encrypting all your email and information, only using cash to pay for things (or, if buying online, using a one-time phone number/email and a one-time card), etc. It can be overkill unless you are an activist. The same with turning off you internet when not using it, keep in touch with tech news, and even change to better options if they appear.
 
 The same philosophy can be made, not only to software, but hardware too. Not only on your computer and phone, but also on every product you own. Buying a futuristic car can be fun, but it might not be worth it if it locks functions behind a subscription, and you don't know if future updates will block even more.
