@@ -48,7 +48,7 @@ def convert_images(
             elif orientation == 6:  # rotated 90 CW
                 img = img.rotate(90, expand=True)
             elif orientation == 8:  # rotated 270 CW
-                img = img.rotate(+90, expand=True)
+                img = img.rotate(-90, expand=True)
 
             # Resize
             if (max_width is not None) and (max_height is not None):
@@ -75,5 +75,5 @@ def convert_images(
 
 if __name__ == '__main__':
     FOLDER = os.path.dirname(os.path.realpath(__file__))
-    convert_images('webp', FOLDER, FOLDER)
+    convert_images('webp', FOLDER, FOLDER, max_width=1280, max_height=720)
     print("Done converting all image files.")
