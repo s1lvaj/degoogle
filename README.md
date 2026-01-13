@@ -111,6 +111,8 @@ A final step would be to even ditch windows for linux. This isn't really related
 
 Regarding your phone, its operating system is designed to distract and consume you. Changing your operating system to something like GrapheneOS (in the case of pixel phones), CalyxOS , LineageOS, etc. can make you take control of it once again.
 
+Still on your phone, if you're using Android, you can opt out from the play store, installing F-droid (for free and opensource applications) and there you can install Aurora Store, to access the play store without a google account.
+
 ## 9. Next Steps
 
 If all of these steps have been completed, you are already way better when it comes to online privacy. Some next steps would be to limit social media usage. While ditching it is not needed, for it can be quite fun to share advetures with friends, it shouldn't define your life, and you should also pay attention to what you post (avoiding posting about your life, focusing on creations and such). Do NOT share your entire life, specially with people you do not know. Also use different names or personas when possible, and know how to identify scams.
