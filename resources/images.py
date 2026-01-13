@@ -74,6 +74,11 @@ def convert_images(
 
 
 if __name__ == '__main__':
-    FOLDER = os.path.dirname(os.path.realpath(__file__))
-    convert_images('webp', FOLDER, FOLDER, max_width=1280, max_height=720)
+
+    DESKTOP = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop')
+    INPUT_FOLDER = os.path.join(DESKTOP, 'PHOTOS')
+    OUTPUT_FOLDER = os.path.join(DESKTOP, 'PHOTOS_UPDATED')
+
+    convert_images('webp', INPUT_FOLDER, OUTPUT_FOLDER, max_width=1280, max_height=720)
+    
     print("Done converting all image files.")

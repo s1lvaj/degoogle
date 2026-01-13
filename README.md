@@ -16,9 +16,9 @@ A Virtual Private Network (VPN) is crucial when navigating the internet. Choose 
 
 ## 3. Email
 
-Now we get to the difficult and tedious part, the email. Specially if it is old and has a lot of necessary services linked to it, like government and madical services. Changing from your gmail can be quite difficult, and for these two examples given, maybe seeing your email as a "necessary evil" can be the most sane solution.
+Now we get to the difficult and tedious part, the email. Specially if it is old and has a lot of necessary services linked to it, like government and medical services. Changing from your gmail can be quite difficult, and for these two examples given, maybe seeing your email as a "necessary evil" can be the most sane solution.
 
-But if you want the challenge, protonmail is a good alternative to google when it comes to email.
+But if you want the challenge, protonmail is a good alternative to google when it comes to email. Changing your other services first is the best solution, keeping track of what you actually use, and having your gmail forwarding all other stuff, while you still get used to proton.
 
 ## 4. Calendar and Cloud Storage
 
@@ -111,7 +111,7 @@ A final step would be to even ditch windows for linux. This isn't really related
 
 Regarding your phone, its operating system is designed to distract and consume you. Changing your operating system to something like GrapheneOS (in the case of pixel phones), CalyxOS , LineageOS, etc. can make you take control of it once again.
 
-Still on your phone, if you're using Android, you can opt out from the play store, installing F-droid (for free and opensource applications) and there you can install Aurora Store, to access the play store without a google account.
+Still on your phone, if you're using Android, you can opt out from the play store. Install F-Droid for free and opensource applications and there you can install Aurora Store, to access the play store without a google account. You can also install all of these directly from the APK, but F-Droid allows for an easier management.
 
 ## 9. Next Steps
 

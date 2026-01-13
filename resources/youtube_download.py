@@ -1,7 +1,8 @@
 import subprocess
 import time
+import os
 
-def main(video, retry_interval=10, max_retries=500, subtitles=False):
+def download(video, retry_interval=10, max_retries=500, location=None, subtitles=False):
 
     command = 'yt-dlp.exe '
     if subtitles:
@@ -21,6 +22,10 @@ def main(video, retry_interval=10, max_retries=500, subtitles=False):
         print(f"Running: {command}")
 
         try:
+
+            if location is not None:
+                os.chdir(location)  # Change the working directory
+            
             process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True, text=True)
 
             error_flag = False
@@ -54,7 +59,8 @@ def main(video, retry_interval=10, max_retries=500, subtitles=False):
 
 if __name__ == "__main__":
 
-    videos = ['...']
+    DESKTOP = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop')
+    VIDEOS = ['...']
 
-    for video in videos:
-        main(video, subtitles=False)
+    for video in VIDEOS:
+        download(video, location=DESKTOP, subtitles=False)
