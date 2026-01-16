@@ -4,6 +4,16 @@ import os
 
 def download(video, retry_interval=10, max_retries=500, location=None, subtitles=False):
 
+    """
+    Download youtube video.
+    
+    :param video: String of the video's URL or ID.
+    :param retry_interval: Integer of seconds between each download attempt, in the case of failure.
+    :param max_retries: Integer of macimum number of download attempts.
+    :param location: Path where the download will be saved.
+    :param subtitles: Bool to download subtitles or not.
+    """
+
     command = 'yt-dlp.exe '
     if subtitles:
         command += '--write-subs --sub-lang en --embed-subs '

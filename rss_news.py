@@ -7,15 +7,15 @@ from xmltodict import parse
 
 def get_news(
         urls: dict,
-):
+) -> str:
     """
     Get information from the news source, and form a message to be sent.
-
-    Args:
-        urls: Dictionary with the new's site name and their rss-feed url.
     
-    Returns:
-        body: String with the updated body of the message.
+    :param urls: Dictionary with the new's site name and their rss-feed url.
+    :type urls: dict
+
+    :return: String with the updated body of the message.
+    :rtype: str
     """
 
     body = ""

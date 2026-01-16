@@ -11,21 +11,19 @@ def convert_images(
         new_type,
         input_folder,
         output_folder,
-        max_width=None,  # max_width=1280 is a good width example
-        max_height=None,  # max_height=720 is a good height example
-        quality=None  # 30–60 is a good range for photos, like 55
+        max_width=None,
+        max_height=None,
+        quality=None
         ):
     """
     Convert images to a new type.
     
-    :param new_type: Description
-    :param input_folder: Description
-    :param output_folder: Description
-    :param max_width: Description
-    :param max_height: Description
-    :param quality: Description
-
-    :return: None.
+    :param new_type: String with the new type of image to convert to.
+    :param input_folder: Path to folder with images to be converted.
+    :param output_folder: Path to folder where new images will be saved.
+    :param max_width: Maximum width for new images (1280 is a good standard).
+    :param max_height: Maximum height for new images (720 is a good standard).
+    :param quality: Quality of the new images (30-60 is a good range for photos, like 55).
     """
     
     os.makedirs(output_folder, exist_ok=True)

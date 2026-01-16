@@ -10,16 +10,19 @@ def get_channel_info(
         title: str,
         body: str,
 ) -> str:
-    """
-    Get information from the channels, and form a message with the information.
-
-    Args:
-        channels: Dictionary with the channel's name and their channel id.
-        title: String of this section of the message.
-        body: String with the current body of the message, to which the new information will be appended.
     
-    Returns:
-        body: String with the updated body of the message.
+    """
+    Get video information from youtube channels, and form a message with it.
+    
+    :param channels: Dictionary with the channel's name and their channel id.
+    :type channels: dict
+    :param title: String with the desired title for this section of the message.
+    :type title: str
+    :param body: String with the current body of the message, to which the new information will be appended.
+    :type body: str
+
+    :return: String with the updated body of the message.
+    :rtype: str
     """
 
     # Compute 25h30min ago in RFC3339 format (github actions can take quite a long time to run)
@@ -59,29 +62,12 @@ def get_channel_info(
     return body
 
 
-def get_channel_groups_info(channel_groups: dict) -> str:
-    """
-    Get information from the channels, and form a message with the information.
-
-    Args:
-        channel_groups: Dictionary linking the group's title to the group's dictionary.
-    
-    Returns:
-        body: String with the updated body of the email.
-    """
-
-    body = "**Your Daily Subscription Activity:**\n\n"
-
-    for group_title, channels in channel_groups.items():
-        body = get_channel_info(channels, group_title, body)
-
-    return body
-
-
 if __name__ == '__main__':
     # Fetch CHANNEL_GROUPS from environment variables
     GROUPS = json.loads(os.getenv("CHANNEL_GROUPS", '{}'))  # Default to empty if not set
 
-    body = get_channel_groups_info(GROUPS)
+    body = "**Your Daily Subscription Activity:**\n\n"
+    for group_title, channels in GROUPS.items():
+        body = get_channel_info(channels, group_title, body)
     
     print(body)
