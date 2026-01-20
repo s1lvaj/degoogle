@@ -70,7 +70,13 @@ def download(video, retry_interval=10, max_retries=500, location=None, subtitles
 if __name__ == "__main__":
 
     DESKTOP = os.path.join(os.path.join(os.path.expanduser('~')), 'Desktop')
-    VIDEOS = ['...']
+    INPUT_FILE = os.path.join(DESKTOP, 'videos.txt')
+
+    VIDEOS = []  # get the video list from a .txt file in the desktop
+    with open(INPUT_FILE, 'r') as file:
+        lines = file.readlines()
+        for line in lines:
+            VIDEOS.append(line.replace('\n', ''))
 
     for video in VIDEOS:
         download(video, location=DESKTOP, subtitles=False)
