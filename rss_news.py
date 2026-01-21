@@ -1,17 +1,17 @@
 import urllib.request
-import time
 import json
 import os
+from datetime import datetime, timedelta, timezone
 from xmltodict import parse
 
 
 def get_news(
-        urls: dict,
+        urls: dict
 ) -> str:
     """
     Get information from the news source, and form a message to be sent.
     
-    :param urls: Dictionary with the new's site name and their rss-feed url.
+    :param urls: Dictionary with the news site name and their rss-feed url.
     :type urls: dict
 
     :return: String with the updated body of the message.
@@ -20,10 +20,8 @@ def get_news(
 
     body = ""
 
-    # Compute 12h ago in RFC3339 format
-    published_after = time.strftime(
-        "%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - (12 * 60 * 60))
-    )
+    # Compute 12 hours ago in UTC
+    published_after = datetime.now(timezone.utc) - timedelta(hours=12)
 
     for name, rss_url in urls.items():
         new_body = ""
@@ -32,41 +30,33 @@ def get_news(
 
         try:
             # Try to get the info from this news source
-            i = 0
-            while True:
-                try:
-                    # get the title, but if there is none, get the description
-                    news = response_parsed['rss']['channel']['item'][i]['title']
-                except:
-                    news = response_parsed['rss']['channel']['item'][i]['description']
-                    news = news[:news.find('\n')]  # limit the size to the content of a single line
+            items = response_parsed['rss']['channel']['item']
+            for i in range(min(5, len(items))):
+                item = items[i]
 
-                # get the date, ignoring the timezone
-                news_published_str = response_parsed['rss']['channel']['item'][i]['pubDate'][:-6]
+                # get the title or, if it doesn't exist (returns None), get the description
+                news = item.get('title') or item.get('description', '')
+                news = news.split('\n')[0]  # limit the size to the content to a single line
 
+                # get the published date
+                news_published_str = item['pubDate']
                 try:
                     # most rss feeds are in one of these 2 time formats
-                    news_published_obj = time.strptime(news_published_str, "%a, %d %b %Y %H:%M:%S")
+                    news_published = datetime.strptime(news_published_str, "%a, %d %b %Y %H:%M:%S %z").replace(tzinfo=timezone.utc)
                 except:
-                    news_published_obj = time.strptime(news_published_str, "%d %b %Y %H:%M")
-                
-                news_published = time.strftime("%Y-%m-%dT%H:%M:%SZ", news_published_obj)
+                    news_published = datetime.strptime(news_published_str, "%d %b %Y %H:%M %z").replace(tzinfo=timezone.utc)
 
                 if news_published < published_after:
                     break  # if the news is older than 12h, we don't want it
-                
-                new_body += f"- {news}\n"
 
-                i += 1
-                if i == 5:
-                    break
+                new_body += f"- {news}\n"
 
             if new_body != "":  # there's information to be added
                 body += f"**{name}:**\n{new_body}\n"
 
         except:
             pass
-
+    
     return body
 
 

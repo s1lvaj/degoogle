@@ -41,14 +41,15 @@ def get_channel_info(
             # Try to get the info from this youtube channel
             i = 0
             while True:
-                video_title = response_parsed['feed']['entry'][i]['title']
-                video_id = response_parsed['feed']['entry'][i]['yt:videoId']
-                video_published = response_parsed['feed']['entry'][i]['published']
+                entry = response_parsed['feed']['entry'][i]
+                video_title = entry['title']
+                video_id = entry['yt:videoId']
+                video_published = entry['published']
 
                 if video_published < published_after:
                     break  # if the video is older than 1 day, we don't want it
 
-                if '/shorts/' not in response_parsed['feed']['entry'][i]['link']['@href']:
+                if '/shorts/' not in entry['link']['@href']:
                     # if the video is NOT a youtube short, it is added
                     new_body += f"**{name}:** {video_title} #watch?v={video_id}\n"
                 
