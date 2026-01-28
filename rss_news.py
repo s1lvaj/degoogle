@@ -25,12 +25,13 @@ def get_news(
 
     for name, rss_url in urls.items():
         new_body = ""
-        response = urllib.request.urlopen(rss_url)
-        response_parsed = parse(response.read().decode('utf-8'))
 
         try:
             # Try to get the info from this news source
+            response = urllib.request.urlopen(rss_url)
+            response_parsed = parse(response.read().decode('utf-8'))
             items = response_parsed['rss']['channel']['item']
+            
             for i in range(min(5, len(items))):
                 item = items[i]
 
