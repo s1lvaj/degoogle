@@ -60,7 +60,7 @@ jobs:
 
           echo "Running the python script!"
 
-          OUTPUT=$(python youtube.py)
+          OUTPUT=$(python src/youtube.py)
 
           echo "Finished running the script and saved as OUTPUT."
 
