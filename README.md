@@ -2,7 +2,7 @@
 
 This repository serves as a guide to degoogle your life. This act serves to take control of your software, choosing better (and sometimes opensource) alternatives, making technology a better tool, instead of a simple time sink.
 
-# Degoogle Techniques
+## Degoogle Techniques
 
 1. **Browser and Search Engine**
 
@@ -116,16 +116,6 @@ This repository serves as a guide to degoogle your life. This act serves to take
     4. Add `C:\Program Files\mpv`.
     5. Test it by opening the terminal and typing `mpv --version`. If it prints the version, it works.
 
-    The only remaining step is to install yt-dlp (mpv uses it to play youtube URLs) by typing `pip install yt-dlp` (it should work by default if you already have python in path). Then, the command `mpv <youtube-link>` should work as intended and play the youtube video. You can also use `yt-dlp <youtube-link>` to download it directly, and there is a script in the folder `resources` to help you with that. You can even ditch the entire mpv installation and simply use yt-dlp to download the videos, if you prefer to watch them offline. However, you do need explicit permission from the content creator in order to download their video. Use this script with the terms of service in mind.
-
-9. **Next Steps**
-
-    A final step would be to even ditch windows for linux. This isn't really related to google, but to privacy more in general. Changing to linux requires a lot of work and willingness to learn; however, it will give you much more control over your technology.
-
-    Some next steps would be to limit social media usage, or even ditching or deleting most of them. Using apps like signal to commnicate, instead of whatsapp, could also be good, but it isn't critical, like using Tor as your default browser, encrypting all your emails and information, only using cash to pay for things (or, if buying online, using a one-time phone number/email and a one-time card), using alias when creating accounts, turning off your internet when not using it, keep in touch with tech news, and even change to better options if they appear. However, this can be overkill unless you are an activist or paranoid, and it's not the goal of this repository.
-
-    If all of the steps 1-8 have been completed, you are already way better when it comes to online privacy, and even if just some of the steps are followed. With this, we hope to have motivated even more to make sure you own your software, and that looking through and contributing to opensource alternatives can be quite useful.
-
-# How To Use This Repository
-
-...
+    The only remaining step is to install yt-dlp (mpv uses it to play youtube URLs) by typing `pip install yt-dlp` (it should work by default if you already have python in path). Then, the command `mpv <youtube-link>` should work as intended and play the youtube video.
+    
+    You can also use `yt-dlp <youtube-link>` to download it directly, and there is a script in the folder `src/resources` to help you with that. You can even ditch the entire mpv installation and simply use yt-dlp to download the videos, if you prefer to watch them offline. However, you do need explicit permission from the content creator in order to download their video. Use this script with the terms of service in mind.
