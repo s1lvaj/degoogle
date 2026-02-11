@@ -13,7 +13,7 @@ This repository combines:
 ```bash
 degoogle/
 ├── .github/workflows/     # Automation via GitHub Actions
-├── docs/                  # Extra Documentaion/Guides for Code and Automation
+├── docs/                  # Extra Documentation/Guides for Scripts and Automation
 ├── scripts/               # Python tools (RSS, YouTube, etc.)
 ├── LICENSE                # MIT License
 ├── README.md              # Degoogling Guide
@@ -48,18 +48,15 @@ degoogle/
 
     Google Maps is very hard to replace. Apple Maps is safer than Google Maps, but opensource alternatives can also be good to look at. Open Street Maps (OSM) is a great collaborative map alternative.
 
+    For Android, OSMAnd or Organic Maps are great tools, letting you download maps in advance, so that you don't have roaming problems. It can also be useful to slowly get used at looking at offline maps, to be able to locate yourself physically.
+
 6. **Mobile Phone**
 
     Regarding your phone, changing your operating system to something like GrapheneOS (in the case of pixel phones), CalyxOS, LineageOS, etc. can make you take control of it once again.
 
     If you're using Android, you can opt out from the Play Store. Install F-Droid (for free and opensource applications) and there you can install Aurora Store, to access the Play Store without a google account. You can also install all of these directly from the APK, but F-Droid allows for an easier management.
 
-    After that, you may use to install what we discussed above:
-    - Good browser with good default search engine.
-    - A VPN service.
-    - Protonmail, calendar and drive (if you decided to use those).
-    - Maps alternative. For Android, OSMAnd or Organic Maps are great tools, letting you download maps in advance, so that you don't have roaming problems. It can also be useful to slowly get used at looking at offline maps, to be able to locate yourself physically.
-    - And then whatever other application you want...
+    After that, you may use to install what we discussed above, such as a good browser and search engine, VPN, protonmail and its other services (if you decided to use those), maps alternative, and whatever other application you want...
 
 ## Use The Scripts (Optional)
 
