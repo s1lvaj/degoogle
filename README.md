@@ -1,5 +1,9 @@
 # Degoogle
 
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Forks](https://img.shields.io/github/forks/s1lvaj/degoogle?style=social)
+![Stars](https://img.shields.io/github/stars/s1lvaj/degoogle?style=social)
+
 This repository serves as a guide to degoogle your life. This act serves to take control of your software, choosing better (and sometimes opensource) alternatives, making technology a better tool, instead of a simple time sink.
 
 This repository combines:
