@@ -1,6 +1,23 @@
-# Why to degoogle your life?
+# Degoogle
 
 This repository serves as a guide to degoogle your life. This act serves to take control of your software, choosing better (and sometimes opensource) alternatives, making technology a better tool, instead of a simple time sink.
+
+This repository combines:
+
+- A structured degoogling guide.
+- Useful automation scripts.
+- GitHub Actions workflows for privacy-friendly automation.
+
+## Project Structure
+
+```bash
+degoogle/
+├── .github/workflows/     # Automation via GitHub Actions
+├── scripts/               # Python tools (RSS, YouTube, etc.)
+├── LICENSE                # MIT License
+├── README.md              # Degoogling Guide
+└── requirements.txt       # External libraries to be installed with Python
+```
 
 ## Degoogle Techniques
 
@@ -24,7 +41,7 @@ This repository serves as a guide to degoogle your life. This act serves to take
 
 4. **Calendar and Cloud Storage**
 
-    Protonmail can also be a solution when it comes to calendar and cloud storage (however, for projects, creating an opensource github repository can be better, as long as you don't share anything too personal). For family photos and alike, moving them from a format like .png to a modern one like .avif can also help, and a tool to do that can be accessed in the folder `src/resources`.
+    Protonmail can also be a solution when it comes to calendar and cloud storage (however, for projects, creating an opensource github repository can be better, as long as you don't share anything too personal). For family photos and alike, moving them from a format like .png to a modern one like .avif can also help, and a tool to do that can be accessed in the folder `scripts/resources`.
 
 5. **Maps**
 
@@ -118,4 +135,24 @@ This repository serves as a guide to degoogle your life. This act serves to take
 
     The only remaining step is to install yt-dlp (mpv uses it to play youtube URLs) by typing `pip install yt-dlp` (it should work by default if you already have python in path). Then, the command `mpv <youtube-link>` should work as intended and play the youtube video.
     
-    You can also use `yt-dlp <youtube-link>` to download it directly, and there is a script in the folder `src/resources` to help you with that. You can even ditch the entire mpv installation and simply use yt-dlp to download the videos, if you prefer to watch them offline. However, you do need explicit permission from the content creator in order to download their video. Use this script with the terms of service in mind.
+    You can also use `yt-dlp <youtube-link>` to download it directly, and there is a script in the folder `scripts/resources` to help you with that. You can even ditch the entire mpv installation and simply use yt-dlp to download the videos, if you prefer to watch them offline. However, you do need explicit permission from the content creator in order to download their video. Use this script with the terms of service in mind.
+
+## Use The Scripts (Optional)
+
+This repository includes automation tools. The requirements are as follows:
+- Python 3.10+
+- Dependencies listed in `requirements.txt`
+
+Install:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run a script:
+
+```bash
+python scripts/youtube.py
+```
+
+See `docs/...` for configuration details and automation via GitHub Actions.
