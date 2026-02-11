@@ -14,6 +14,7 @@ This repository combines:
 degoogle/
 ├── .github/workflows/     # Automation via GitHub Actions
 ├── docs/                  # Extra Documentation/Guides for Scripts and Automation
+├── examples/              # Examples of json files
 ├── scripts/               # Python tools (RSS, YouTube, etc.)
 ├── LICENSE                # MIT License
 ├── README.md              # Degoogling Guide
@@ -56,9 +57,9 @@ degoogle/
 
     If you're using Android, you can opt out from the Play Store. Install F-Droid (for free and opensource applications) and there you can install Aurora Store, to access the Play Store without a google account. You can also install all of these directly from the APK, but F-Droid allows for an easier management.
 
-    After that, you may use to install what we discussed above, such as a good browser and search engine, VPN, protonmail and its other services (if you decided to use those), maps alternative, and whatever other application you want...
+    After that, you may use to install what we discussed above, such as a good browser and search engine, VPN, protonmail and its other services (if you decided to use those), maps alternative, and whatever other applications you want.
 
-## Use The Scripts (Optional)
+## How to Use the Scripts (Optional)
 
 This repository includes automation tools. The requirements are as follows:
 - Python 3.10+

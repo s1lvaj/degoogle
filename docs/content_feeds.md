@@ -6,19 +6,6 @@ This repository has github actions running daily scripts to gather the recent ne
 
 Below is an example of a `CHANNEL_GROUPS` json for you to run the youtube code.
 
-```json
-{
-"Science": {
-    "3Blue1Brown": "UCYO_jab_esuFRV4b17AJtAw",
-    "Veritasium": "UCHnyfMqiRRG1u-2MsSQLbXA",
-    "VSauce": "UC6nSFpj9HTCZ5t-N3Rm3-HA"
-},
-"Tech": {
-    "Fireship": "UCsBjURrPoezykLs9EqgamOA"
-}
-}
-```
-
 If you wanted to include in your script the function to directly send you an email using a gmail account, that would also be possible with the script below. But since this is a degoogle repository, that option will not be used.
 
 ```python Sending Email
