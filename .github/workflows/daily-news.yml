@@ -60,7 +60,7 @@ jobs:
 
           echo "Running the python script!"
 
-          OUTPUT=$(python src/rss_news.py)
+          OUTPUT=$(python scripts/rss_news.py)
 
           echo "Finished running the script and saved as OUTPUT."
 
