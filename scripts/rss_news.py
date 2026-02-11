@@ -38,6 +38,7 @@ def get_news(
                 # get the title or, if it doesn't exist (returns None), get the description
                 news = item.get('title') or item.get('description', '')
                 news = news.split('\n')[0]  # limit the size to the content to a single line
+                news = news.replace('*', '')  # remove asterisks to avoid formatting issues in the message
 
                 # get the published date
                 news_published_str = item['pubDate']

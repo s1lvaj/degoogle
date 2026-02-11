@@ -42,7 +42,7 @@ def get_channel_info(
             i = 0
             while True:
                 entry = response_parsed['feed']['entry'][i]
-                video_title = entry['title']
+                video_title = entry['title'].replace('*', '')  # remove asterisks to avoid formatting issues in the message
                 video_id = entry['yt:videoId']
                 video_published = entry['published']
 
