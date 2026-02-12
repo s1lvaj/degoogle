@@ -47,7 +47,7 @@ degoogle/
 
 4. **Calendar and Cloud Storage**
 
-    Protonmail can also be a solution when it comes to calendar and cloud storage (however, for projects, creating an opensource github repository can be better, as long as you don't share anything too personal). For family photos and alike, moving them from a format like .png to a modern one like .avif can also help, and a tool to do that can be accessed in the folder `scripts/resources`.
+    Protonmail can also be a solution when it comes to calendar and cloud storage (however, for projects, creating an opensource github repository can be better, as long as you don't share anything too personal). For family photos and alike, moving them from a format like .png to a modern one like .avif can also help.
 
 5. **Maps**
 
