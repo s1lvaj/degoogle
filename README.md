@@ -1,6 +1,6 @@
 # Degoogle
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
 ![Forks](https://img.shields.io/github/forks/s1lvaj/degoogle?style=social)
 ![Stars](https://img.shields.io/github/stars/s1lvaj/degoogle?style=social)
 
