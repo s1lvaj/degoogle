@@ -19,7 +19,7 @@ degoogle/
 ├── .github/workflows/     # Automation via GitHub Actions
 ├── docs/                  # Extra Documentation/Guides for Scripts and Automation
 ├── examples/              # Examples of json files
-├── scripts/               # Python tools (RSS, YouTube, etc.)
+├── scripts/               # Python tools (RSS News and YouTube)
 ├── LICENSE                # MIT License
 ├── README.md              # Degoogling Guide
 └── requirements.txt       # External libraries to be installed with Python
