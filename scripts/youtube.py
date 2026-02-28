@@ -51,14 +51,14 @@ def get_channel_info(
 
                 if '/shorts/' not in entry['link']['@href']:
                     # if the video is NOT a youtube short, it is added
-                    new_body += f"**{name}:** {video_title} #watch?v={video_id}\n"
+                    new_body += f"{name}: {video_title} #watch?v={video_id}\n"
                 
                 i += 1
         except:
             pass
     
     if new_body != "":  # there's information to be added
-        body += f"**{title}:**\n{new_body}\n"  # extra blank line at the end
+        body += f"{title}:\n{new_body}\n"  # extra blank line at the end
 
     return body
 
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     # Fetch CHANNEL_GROUPS from environment variables
     GROUPS = json.loads(os.getenv("CHANNEL_GROUPS", '{}'))  # Default to empty if not set
 
-    body = "**Your Daily Subscription Activity:**\n\n"
+    body = "Your Daily Subscription Activity:\n\n"
     for group_title, channels in GROUPS.items():
         body = get_channel_info(channels, group_title, body)
     
