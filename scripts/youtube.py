@@ -51,7 +51,7 @@ def get_channel_info(
 
                 if '/shorts/' not in entry['link']['@href']:
                     # if the video is NOT a youtube short, it is added
-                    new_body += f"{name}: {video_title} #watch?v={video_id}\n"
+                    new_body += f"- {name}: {video_title} #watch?v={video_id}\n"
                 
                 i += 1
         except:
