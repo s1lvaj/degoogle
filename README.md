@@ -65,20 +65,24 @@ degoogle/
 
 ## How to Use the Scripts (Optional)
 
-This repository includes automation tools. The requirements are as follows:
-- Python 3.10+
-- Dependencies listed in `requirements.txt`
+This repository includes automation tools, that can be used with Python 3.10+. To use the resources, do as follows:
 
-Install:
+1. **Clone the Repository**:
 
-```bash
-pip install -r requirements.txt
-```
+    ```bash
+    git clone https://github.com/s1lvaj/degoogle.git
+    ```
 
-Run a script:
+2. **Install the Requirements**:
 
-```bash
-python scripts/youtube.py
-```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-See `docs/...` for configuration details and automation via GitHub Actions.
+3. **Run a Script**:
+
+    ```bash
+    python scripts/youtube.py
+    ```
+
+See `docs/content_feeds.md` and `docs/github_automation.md` for configuration details and automation via GitHub Actions.
