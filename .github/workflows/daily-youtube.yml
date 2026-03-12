@@ -2,7 +2,7 @@ name: Run YouTube Script Daily
 
 on:
   schedule:
-    - cron: "0 16 * * *"   # Runs every day at 07:00 UTC
+    - cron: "0 16 * * *"   # Runs every day at 16:00 UTC
   workflow_dispatch:
     inputs:
       environment:
