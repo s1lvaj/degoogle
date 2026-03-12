@@ -63,6 +63,16 @@ degoogle/
 
     After that, you may use to install what we discussed above, such as a good browser and search engine, VPN, protonmail and its other services (if you decided to use those), maps alternative, and whatever other applications you want.
 
+7. **YouTube**
+
+    You can abandon YouTube for other video platform; however, if you still want to keep track of what your favorite YouTube creators are posting, you can still do so in a more private way.
+
+    The documentation in `docs/content_feeds.md` explains how you can use the code in `scripts` and `examples` to get content updates from your favorite sources without having a Google account.
+
+    The documentation in `docs/github_automation.md` explains how you can automate those scripts to run daily using GitHub Actions.
+
+    The documentation in `docs/media_tools.md` explains how you can watch said content without using YouTube directly.
+
 ## How to Use the Scripts (Optional)
 
 This repository includes automation tools, that can be used with Python 3.10+. To use the resources, do as follows:
@@ -84,5 +94,3 @@ This repository includes automation tools, that can be used with Python 3.10+. T
     ```bash
     python scripts/youtube.py
     ```
-
-See `docs/content_feeds.md` and `docs/github_automation.md` for configuration details and automation via GitHub Actions.
