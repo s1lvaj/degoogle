@@ -28,7 +28,14 @@ def get_news(
 
         try:
             # Try to get the info from this news source
-            response = urllib.request.urlopen(rss_url)
+            req = urllib.request.Request(
+                rss_url,
+                headers={
+                    "User-Agent": "Mozilla/5.0"
+                }
+            )
+            response = urllib.request.urlopen(req, timeout=10)
+
             response_parsed = parse(response.read().decode('utf-8'))
             items = response_parsed['rss']['channel']['item']
             
