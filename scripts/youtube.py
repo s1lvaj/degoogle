@@ -67,7 +67,7 @@ if __name__ == '__main__':
     # Fetch CHANNEL_GROUPS from environment variables
     GROUPS = json.loads(os.getenv("CHANNEL_GROUPS", '{}'))  # Default to empty if not set
 
-    body = "Your Daily Subscription Activity:\n\n"
+    body = "**Your Daily Subscription Activity**:\n\n"
     for group_title, channels in GROUPS.items():
         body = get_channel_info(channels, group_title, body)
     
