@@ -25,9 +25,10 @@ def get_channel_info(
     :rtype: str
     """
 
-    # Compute 25h30min ago in RFC3339 format (github actions can take quite a long time to run)
+    # Compute 24h+buffer=32h ago in RFC3339 format (github actions can take quite a long time to run)
+    BUFFER_HOURS = 8
     published_after = time.strftime(
-        "%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - (25 * 60 * 60) - (30 * 60))
+        "%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - (24 * 60 * 60) - (BUFFER_HOURS * 60 * 60))
     )
 
     new_body = ""
